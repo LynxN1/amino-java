@@ -9,9 +9,10 @@ public class Main {
         long m = System.currentTimeMillis() / 1000;
         Client client = new Client();
         AccountData account;
-        account = client.login("akinatamain@inpwa.com", "b66ixib0tez");
+        account = client.login("", "");
         client.SID = account.getSid();
         System.out.println("My UserID: " + account.getAccount().getUid());
+        System.out.println("My Nickname: " + account.getAccount().getNickname());
         CommunitiesData sub_clients;
         sub_clients = client.getSubClients(0, 100);
         if (sub_clients != null) {
