@@ -9,6 +9,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.io.IOException;
+import utils.TimeUtils;
 
 public class Client {
     static RestService client = getClient();
@@ -16,7 +17,7 @@ public class Client {
     static String deviceId = "01C1B9B8A82A651FD387E19E2679823416C9A964166D74FDC5ECDC93651F9F9B4C8F5936B660DEE753";
 
     public AccountData login(String email, String password) {
-        int unixTime = (int) (System.currentTimeMillis() / 1000);
+        int unixTime = TimeUtils.unixInstant();
         LoginBody body = new LoginBody();
         body.email = email;
         body.v = 2;
