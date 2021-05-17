@@ -1,10 +1,11 @@
 package pojo.requests;
 
 public class AttachedObject {
-    String objectId;
-    int objectType;
-    String link;
-    String title;
-    String content;
+
+  String objectId;
+  int objectType;
+  String link;
+  String title;
+  String content;
 
 }

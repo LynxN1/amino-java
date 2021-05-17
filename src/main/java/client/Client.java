@@ -1,6 +1,12 @@
 package client;
 
+import static headers.Headers.deviceId;
+import static headers.Headers.headersMap;
+
 import com.google.gson.JsonObject;
+import java.io.IOException;
+import javax.security.auth.login.LoginException;
+import okhttp3.ResponseBody;
 import pojo.requests.LoginBody;
 import pojo.requests.SendMessageBody;
 import pojo.response.account.AccountData;
@@ -13,121 +19,127 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import utils.TimeUtils;
 
-import java.io.IOException;
-
-import static headers.Headers.*;
-
 public class Client {
-    static RestClientService client = getClient();
-    public String SID;
-    public String comId;
 
-    public AccountData login(String email, String password) {
-        int unixTime = TimeUtils.unixInstant();
-        LoginBody body = new LoginBody();
-        body.email = email;
-        body.v = 2;
-        body.secret = "0 " + password;
-        body.deviceID = deviceId;
-        body.clientType = 100;
-        body.action = "normal";
-        body.timestamp = unixTime;
-        Call<AccountData> res = client.getAccountData(
-                headersMap,
-                body
-        );
-        try {
-            Response<AccountData> accountData = res.execute();
-            if (accountData.isSuccessful()) {
-                SID = accountData.body().getSid();
-                return accountData.body();
-            } else {
-                System.out.println(accountData.errorBody().string());
-                System.exit(0);
-                return null;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+  static RestClientService client = getClient();
+  public String SID;
+  public String comId;
+
+  static RestClientService getClient() {
+    Retrofit retrofit = new Retrofit.Builder()
+        .baseUrl("https://service.narvii.com/api/v1/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build();
+    return retrofit.create(RestClientService.class);
+  }
+
+  public AccountData tryLogin(String email, String password) {
+    try {
+      return login(email, password);
+    } catch (IOException | LoginException e) {
+      e.printStackTrace();
     }
 
-    public CommunitiesData getSubClients(int start, int size) {
-        headersMap.put("NDCAUTH", "sid=" + SID);
-        Call<CommunitiesData> res = client.getSubClients(
-                headersMap,
-                start,
-                size
-        );
-        try {
-            return res.execute().body();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+    return null;
+  }
+
+  public AccountData login(String email, String password) throws IOException, LoginException {
+    int unixTime = TimeUtils.unixInstant();
+    LoginBody body = new LoginBody()
+        .email(email)
+        .v(2)
+        .secret(password)
+        .deviceId(deviceId)
+        .clientType(100)
+        .action("normal")
+        .timestamp(unixTime);
+    Call<AccountData> res = client.getAccountData(headersMap, body);
+
+    Response<AccountData> accountDataResponse = res.execute();
+    if (accountDataResponse.isSuccessful()) {
+      AccountData accountData = accountDataResponse.body();
+      if (accountData != null) {
+        SID = accountData.getSid();
+      }
+      return accountData;
     }
 
-    public NdcAccount getUserInfo(String userId) {
-        if (comId == null){
-            System.out.println("Invalid comId");
-            return null;
-        }
-        headersMap.put("NDCAUTH", "sid=" + SID);
-        Call<NdcAccount> res = client.ndcAccountData(
-                headersMap,
-                comId,
-                userId
-        );
-        try {
-            return res.execute().body();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+    ResponseBody responseBody = accountDataResponse.errorBody();
+    if (responseBody != null) {
+      System.out.println(responseBody.string());
     }
 
-    public ThreadList getChatThreads(String type, int start, int size) {
-        Call<ThreadList> res = client.ndcChatThreads(
-                headersMap,
-                comId,
-                type,
-                start,
-                size
-        );
-        try {
-            return res.execute().body();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+    throw new LoginException("Login failed");
+  }
 
-    public void sendMessage(String message, String chatId) {
-        SendMessageBody body = new SendMessageBody();
-        body.type = 0;
-        body.content = message;
-        headersMap.put("NDCAUTH", "sid=" + SID);
-        Call<JsonObject> res = client.sendMessage(
-                headersMap,
-                comId,
-                chatId,
-                body
-        );
-        try {
-            Response<JsonObject> result = res.execute();
-            if (!result.isSuccessful()) {
-                System.out.println(result.errorBody().string());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+  public CommunitiesData getSubClients(int start, int size) {
+    headersMap.put("NDCAUTH", "sid=" + SID);
+    Call<CommunitiesData> res = client.getSubClients(
+        headersMap,
+        start,
+        size
+    );
+    try {
+      return res.execute().body();
+    } catch (IOException e) {
+      e.printStackTrace();
+      return null;
     }
+  }
 
-    static RestClientService getClient() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://service.narvii.com/api/v1/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        return retrofit.create(RestClientService.class);
+  public NdcAccount getUserInfo(String userId) {
+    if (comId == null) {
+      System.out.println("Invalid comId");
+      return null;
     }
+    headersMap.put("NDCAUTH", "sid=" + SID);
+    Call<NdcAccount> res = client.ndcAccountData(
+        headersMap,
+        comId,
+        userId
+    );
+    try {
+      return res.execute().body();
+    } catch (IOException e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
+
+  public ThreadList getChatThreads(String type, int start, int size) {
+    Call<ThreadList> res = client.ndcChatThreads(
+        headersMap,
+        comId,
+        type,
+        start,
+        size
+    );
+    try {
+      return res.execute().body();
+    } catch (IOException e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
+
+  public void sendMessage(String message, String chatId) {
+    SendMessageBody body = new SendMessageBody();
+    body.type = 0;
+    body.content = message;
+    headersMap.put("NDCAUTH", "sid=" + SID);
+    Call<JsonObject> res = client.sendMessage(
+        headersMap,
+        comId,
+        chatId,
+        body
+    );
+    try {
+      Response<JsonObject> result = res.execute();
+      if (!result.isSuccessful()) {
+        System.out.println(result.errorBody().string());
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
 }

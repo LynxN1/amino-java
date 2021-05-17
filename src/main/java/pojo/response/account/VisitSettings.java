@@ -2,19 +2,19 @@ package pojo.response.account;
 
 import com.google.gson.annotations.SerializedName;
 
-public class VisitSettings{
+public class VisitSettings {
 
-	@SerializedName("notificationStatus")
-	private int notificationStatus;
+  @SerializedName("notificationStatus")
+  private int notificationStatus;
 
-	@SerializedName("privacyMode")
-	private int privacyMode;
+  @SerializedName("privacyMode")
+  private int privacyMode;
 
-	public int getNotificationStatus(){
-		return notificationStatus;
-	}
+  public int getNotificationStatus() {
+    return notificationStatus;
+  }
 
-	public int getPrivacyMode(){
-		return privacyMode;
-	}
+  public int getPrivacyMode() {
+    return privacyMode;
+  }
 }

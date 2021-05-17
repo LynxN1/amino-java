@@ -1,21 +1,21 @@
 package pojo.response.thread_list;
 
-import java.util.List;
 import com.google.gson.annotations.SerializedName;
+import java.util.List;
 
-public class ScreeningRoomPermission{
+public class ScreeningRoomPermission {
 
-	@SerializedName("uidList")
-	private List<Object> uidList;
+  @SerializedName("uidList")
+  private List<Object> uidList;
 
-	@SerializedName("action")
-	private int action;
+  @SerializedName("action")
+  private int action;
 
-	public List<Object> getUidList(){
-		return uidList;
-	}
+  public List<Object> getUidList() {
+    return uidList;
+  }
 
-	public int getAction(){
-		return action;
-	}
+  public int getAction() {
+    return action;
+  }
 }

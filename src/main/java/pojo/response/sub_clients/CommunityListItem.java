@@ -1,168 +1,167 @@
 package pojo.response.sub_clients;
 
-import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class CommunityListItem{
+public class CommunityListItem {
 
-	@SerializedName("modifiedTime")
-	private String modifiedTime;
+  @SerializedName("modifiedTime")
+  private String modifiedTime;
 
-	@SerializedName("agent")
-	private Agent agent;
+  @SerializedName("agent")
+  private Agent agent;
 
-	@SerializedName("membersCount")
-	private int membersCount;
+  @SerializedName("membersCount")
+  private int membersCount;
 
-	@SerializedName("probationStatus")
-	private int probationStatus;
+  @SerializedName("probationStatus")
+  private int probationStatus;
 
-	@SerializedName("promotionalMediaList")
-	private Object promotionalMediaList;
+  @SerializedName("promotionalMediaList")
+  private Object promotionalMediaList;
 
-	@SerializedName("themePack")
-	private ThemePack themePack;
+  @SerializedName("themePack")
+  private ThemePack themePack;
 
-	@SerializedName("userAddedTopicList")
-	private Object userAddedTopicList;
+  @SerializedName("userAddedTopicList")
+  private Object userAddedTopicList;
 
-	@SerializedName("link")
-	private String link;
+  @SerializedName("link")
+  private String link;
 
-	@SerializedName("icon")
-	private String icon;
+  @SerializedName("icon")
+  private String icon;
 
-	@SerializedName("templateId")
-	private int templateId;
+  @SerializedName("templateId")
+  private int templateId;
 
-	@SerializedName("launchPage")
-	private LaunchPage launchPage;
+  @SerializedName("launchPage")
+  private LaunchPage launchPage;
 
-	@SerializedName("communityHeat")
-	private float communityHeat;
+  @SerializedName("communityHeat")
+  private float communityHeat;
 
-	@SerializedName("endpoint")
-	private String endpoint;
+  @SerializedName("endpoint")
+  private String endpoint;
 
-	@SerializedName("ndcId")
-	private int ndcId;
+  @SerializedName("ndcId")
+  private int ndcId;
 
-	@SerializedName("joinType")
-	private int joinType;
+  @SerializedName("joinType")
+  private int joinType;
 
-	@SerializedName("listedStatus")
-	private int listedStatus;
+  @SerializedName("listedStatus")
+  private int listedStatus;
 
-	@SerializedName("name")
-	private String name;
+  @SerializedName("name")
+  private String name;
 
-	@SerializedName("tagline")
-	private String tagline;
+  @SerializedName("tagline")
+  private String tagline;
 
-	@SerializedName("createdTime")
-	private String createdTime;
+  @SerializedName("createdTime")
+  private String createdTime;
 
-	@SerializedName("activeInfo")
-	private ActiveInfo activeInfo;
+  @SerializedName("activeInfo")
+  private ActiveInfo activeInfo;
 
-	@SerializedName("strategyInfo")
-	private String strategyInfo;
+  @SerializedName("strategyInfo")
+  private String strategyInfo;
 
-	@SerializedName("primaryLanguage")
-	private String primaryLanguage;
+  @SerializedName("primaryLanguage")
+  private String primaryLanguage;
 
-	@SerializedName("status")
-	private int status;
+  @SerializedName("status")
+  private int status;
 
-	public String getModifiedTime(){
-		return modifiedTime;
-	}
+  public String getModifiedTime() {
+    return modifiedTime;
+  }
 
-	public Agent getAgent(){
-		return agent;
-	}
+  public Agent getAgent() {
+    return agent;
+  }
 
-	public int getMembersCount(){
-		return membersCount;
-	}
+  public int getMembersCount() {
+    return membersCount;
+  }
 
-	public int getProbationStatus(){
-		return probationStatus;
-	}
+  public int getProbationStatus() {
+    return probationStatus;
+  }
 
-	public Object getPromotionalMediaList(){
-		return promotionalMediaList;
-	}
+  public Object getPromotionalMediaList() {
+    return promotionalMediaList;
+  }
 
-	public ThemePack getThemePack(){
-		return themePack;
-	}
+  public ThemePack getThemePack() {
+    return themePack;
+  }
 
-	public Object getUserAddedTopicList(){
-		return userAddedTopicList;
-	}
+  public Object getUserAddedTopicList() {
+    return userAddedTopicList;
+  }
 
-	public String getLink(){
-		return link;
-	}
+  public String getLink() {
+    return link;
+  }
 
-	public String getIcon(){
-		return icon;
-	}
+  public String getIcon() {
+    return icon;
+  }
 
-	public int getTemplateId(){
-		return templateId;
-	}
+  public int getTemplateId() {
+    return templateId;
+  }
 
-	public LaunchPage getLaunchPage(){
-		return launchPage;
-	}
+  public LaunchPage getLaunchPage() {
+    return launchPage;
+  }
 
-	public float getCommunityHeat(){
-		return communityHeat;
-	}
+  public float getCommunityHeat() {
+    return communityHeat;
+  }
 
-	public String getEndpoint(){
-		return endpoint;
-	}
+  public String getEndpoint() {
+    return endpoint;
+  }
 
-	public int getNdcId(){
-		return ndcId;
-	}
+  public int getNdcId() {
+    return ndcId;
+  }
 
-	public int getJoinType(){
-		return joinType;
-	}
+  public int getJoinType() {
+    return joinType;
+  }
 
-	public int getListedStatus(){
-		return listedStatus;
-	}
+  public int getListedStatus() {
+    return listedStatus;
+  }
 
-	public String getName(){
-		return name;
-	}
+  public String getName() {
+    return name;
+  }
 
-	public String getTagline(){
-		return tagline;
-	}
+  public String getTagline() {
+    return tagline;
+  }
 
-	public String getCreatedTime(){
-		return createdTime;
-	}
+  public String getCreatedTime() {
+    return createdTime;
+  }
 
-	public ActiveInfo getActiveInfo(){
-		return activeInfo;
-	}
+  public ActiveInfo getActiveInfo() {
+    return activeInfo;
+  }
 
-	public String getStrategyInfo(){
-		return strategyInfo;
-	}
+  public String getStrategyInfo() {
+    return strategyInfo;
+  }
 
-	public String getPrimaryLanguage(){
-		return primaryLanguage;
-	}
+  public String getPrimaryLanguage() {
+    return primaryLanguage;
+  }
 
-	public int getStatus(){
-		return status;
-	}
+  public int getStatus() {
+    return status;
+  }
 }

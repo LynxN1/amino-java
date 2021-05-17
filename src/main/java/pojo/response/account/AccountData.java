@@ -4,66 +4,66 @@ import com.google.gson.annotations.SerializedName;
 
 public class AccountData {
 
-	@SerializedName("api:timestamp")
-	private String apiTimestamp;
+  @SerializedName("api:timestamp")
+  private String apiTimestamp;
 
-	@SerializedName("auid")
-	private String auid;
+  @SerializedName("auid")
+  private String auid;
 
-	@SerializedName("api:duration")
-	private String apiDuration;
+  @SerializedName("api:duration")
+  private String apiDuration;
 
-	@SerializedName("api:statuscode")
-	private int apiStatuscode;
+  @SerializedName("api:statuscode")
+  private int apiStatuscode;
 
-	@SerializedName("secret")
-	private String secret;
+  @SerializedName("secret")
+  private String secret;
 
-	@SerializedName("account")
-	private Account account;
+  @SerializedName("account")
+  private Account account;
 
-	@SerializedName("api:message")
-	private String apiMessage;
+  @SerializedName("api:message")
+  private String apiMessage;
 
-	@SerializedName("userProfile")
-	private UserProfile userProfile;
+  @SerializedName("userProfile")
+  private UserProfile userProfile;
 
-	@SerializedName("sid")
-	private String sid;
+  @SerializedName("sid")
+  private String sid;
 
-	public String getApiTimestamp(){
-		return apiTimestamp;
-	}
+  public String getApiTimestamp() {
+    return apiTimestamp;
+  }
 
-	public String getAuid(){
-		return auid;
-	}
+  public String getAuid() {
+    return auid;
+  }
 
-	public String getApiDuration(){
-		return apiDuration;
-	}
+  public String getApiDuration() {
+    return apiDuration;
+  }
 
-	public int getApiStatuscode(){
-		return apiStatuscode;
-	}
+  public int getApiStatuscode() {
+    return apiStatuscode;
+  }
 
-	public String getSecret(){
-		return secret;
-	}
+  public String getSecret() {
+    return secret;
+  }
 
-	public Account getAccount(){
-		return account;
-	}
+  public Account getAccount() {
+    return account;
+  }
 
-	public String getApiMessage(){
-		return apiMessage;
-	}
+  public String getApiMessage() {
+    return apiMessage;
+  }
 
-	public UserProfile getUserProfile(){
-		return userProfile;
-	}
+  public UserProfile getUserProfile() {
+    return userProfile;
+  }
 
-	public String getSid(){
-		return sid;
-	}
+  public String getSid() {
+    return sid;
+  }
 }

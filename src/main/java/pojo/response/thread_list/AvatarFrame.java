@@ -2,61 +2,61 @@ package pojo.response.thread_list;
 
 import com.google.gson.annotations.SerializedName;
 
-public class AvatarFrame{
+public class AvatarFrame {
 
-	@SerializedName("resourceUrl")
-	private String resourceUrl;
+  @SerializedName("resourceUrl")
+  private String resourceUrl;
 
-	@SerializedName("frameId")
-	private String frameId;
+  @SerializedName("frameId")
+  private String frameId;
 
-	@SerializedName("ownershipStatus")
-	private Object ownershipStatus;
+  @SerializedName("ownershipStatus")
+  private Object ownershipStatus;
 
-	@SerializedName("name")
-	private String name;
+  @SerializedName("name")
+  private String name;
 
-	@SerializedName("icon")
-	private String icon;
+  @SerializedName("icon")
+  private String icon;
 
-	@SerializedName("frameType")
-	private int frameType;
+  @SerializedName("frameType")
+  private int frameType;
 
-	@SerializedName("version")
-	private int version;
+  @SerializedName("version")
+  private int version;
 
-	@SerializedName("status")
-	private int status;
+  @SerializedName("status")
+  private int status;
 
-	public String getResourceUrl(){
-		return resourceUrl;
-	}
+  public String getResourceUrl() {
+    return resourceUrl;
+  }
 
-	public String getFrameId(){
-		return frameId;
-	}
+  public String getFrameId() {
+    return frameId;
+  }
 
-	public Object getOwnershipStatus(){
-		return ownershipStatus;
-	}
+  public Object getOwnershipStatus() {
+    return ownershipStatus;
+  }
 
-	public String getName(){
-		return name;
-	}
+  public String getName() {
+    return name;
+  }
 
-	public String getIcon(){
-		return icon;
-	}
+  public String getIcon() {
+    return icon;
+  }
 
-	public int getFrameType(){
-		return frameType;
-	}
+  public int getFrameType() {
+    return frameType;
+  }
 
-	public int getVersion(){
-		return version;
-	}
+  public int getVersion() {
+    return version;
+  }
 
-	public int getStatus(){
-		return status;
-	}
+  public int getStatus() {
+    return status;
+  }
 }

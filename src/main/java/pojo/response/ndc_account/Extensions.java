@@ -2,33 +2,33 @@ package pojo.response.ndc_account;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Extensions{
+public class Extensions {
 
-	@SerializedName("privilegeOfChatInviteRequest")
-	private int privilegeOfChatInviteRequest;
+  @SerializedName("privilegeOfChatInviteRequest")
+  private int privilegeOfChatInviteRequest;
 
-	@SerializedName("privilegeOfCommentOnUserProfile")
-	private int privilegeOfCommentOnUserProfile;
+  @SerializedName("privilegeOfCommentOnUserProfile")
+  private int privilegeOfCommentOnUserProfile;
 
-	@SerializedName("style")
-	private Style style;
+  @SerializedName("style")
+  private Style style;
 
-	@SerializedName("defaultBubbleId")
-	private String defaultBubbleId;
+  @SerializedName("defaultBubbleId")
+  private String defaultBubbleId;
 
-	public int getPrivilegeOfChatInviteRequest(){
-		return privilegeOfChatInviteRequest;
-	}
+  public int getPrivilegeOfChatInviteRequest() {
+    return privilegeOfChatInviteRequest;
+  }
 
-	public int getPrivilegeOfCommentOnUserProfile(){
-		return privilegeOfCommentOnUserProfile;
-	}
+  public int getPrivilegeOfCommentOnUserProfile() {
+    return privilegeOfCommentOnUserProfile;
+  }
 
-	public Style getStyle(){
-		return style;
-	}
+  public Style getStyle() {
+    return style;
+  }
 
-	public String getDefaultBubbleId(){
-		return defaultBubbleId;
-	}
+  public String getDefaultBubbleId() {
+    return defaultBubbleId;
+  }
 }

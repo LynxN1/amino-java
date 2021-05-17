@@ -2,12 +2,12 @@ package pojo.response.account;
 
 import com.google.gson.annotations.SerializedName;
 
-public class AdvancedSettings{
+public class AdvancedSettings {
 
-	@SerializedName("analyticsEnabled")
-	private int analyticsEnabled;
+  @SerializedName("analyticsEnabled")
+  private int analyticsEnabled;
 
-	public int getAnalyticsEnabled(){
-		return analyticsEnabled;
-	}
+  public int getAnalyticsEnabled() {
+    return analyticsEnabled;
+  }
 }
