@@ -39,7 +39,7 @@ public class CommunityListItem{
 	private LaunchPage launchPage;
 
 	@SerializedName("communityHeat")
-	private int communityHeat;
+	private float communityHeat;
 
 	@SerializedName("endpoint")
 	private String endpoint;
@@ -118,7 +118,7 @@ public class CommunityListItem{
 		return launchPage;
 	}
 
-	public int getCommunityHeat(){
+	public float getCommunityHeat(){
 		return communityHeat;
 	}
 
