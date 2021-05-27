@@ -169,7 +169,7 @@ public class Client {
     }
 
     public void postActivity(String userId) {
-      // Not working :/
+      // TODO Invalid request
       if (comId == null) {
         System.out.println("Invalid comId");
         return;
