@@ -24,4 +24,3 @@ public class SendMessageBody {
         return this;
     }
 }
-
