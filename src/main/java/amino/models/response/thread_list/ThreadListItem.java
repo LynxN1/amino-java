@@ -1,196 +1,174 @@
 package amino.models.response.thread_list;
 
+import amino.models.response.thread_list.Author;
+import amino.models.response.thread_list.Extensions;
+import amino.models.response.thread_list.LastMessageSummary;
+import amino.models.response.thread_list.MembersSummaryItem;
 import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class ThreadListItem {
+    @SerializedName(value="modifiedTime")
+    private Object modifiedTime;
+    @SerializedName(value="membersQuota")
+    private int membersQuota;
+    @SerializedName(value="keywords")
+    private Object keywords;
+    @SerializedName(value="needHidden")
+    private boolean needHidden;
+    @SerializedName(value="lastReadTime")
+    private String lastReadTime;
+    @SerializedName(value="icon")
+    private String icon;
+    @SerializedName(value="title")
+    private String title;
+    @SerializedName(value="type")
+    private int type;
+    @SerializedName(value="content")
+    private String content;
+    @SerializedName(value="threadId")
+    private String threadId;
+    @SerializedName(value="latestActivityTime")
+    private String latestActivityTime;
+    @SerializedName(value="uid")
+    private String uid;
+    @SerializedName(value="ndcId")
+    private int ndcId;
+    @SerializedName(value="createdTime")
+    private Object createdTime;
+    @SerializedName(value="alertOption")
+    private int alertOption;
+    @SerializedName(value="membersCount")
+    private int membersCount;
+    @SerializedName(value="membersSummary")
+    private List<MembersSummaryItem> membersSummary;
+    @SerializedName(value="isPinned")
+    private boolean isPinned;
+    @SerializedName(value="author")
+    private Author author;
+    @SerializedName(value="userAddedTopicList")
+    private List<Object> userAddedTopicList;
+    @SerializedName(value="lastMessageSummary")
+    private LastMessageSummary lastMessageSummary;
+    @SerializedName(value="membershipStatus")
+    private int membershipStatus;
+    @SerializedName(value="condition")
+    private int condition;
+    @SerializedName(value="extensions")
+    private Extensions extensions;
+    @SerializedName(value="strategyInfo")
+    private String strategyInfo;
+    @SerializedName(value="status")
+    private int status;
+    @SerializedName(value="publishToGlobal")
+    private int publishToGlobal;
 
-  @SerializedName("modifiedTime")
-  private Object modifiedTime;
+    public Object getModifiedTime() {
+        return this.modifiedTime;
+    }
 
-  @SerializedName("membersQuota")
-  private int membersQuota;
+    public int getMembersQuota() {
+        return this.membersQuota;
+    }
 
-  @SerializedName("keywords")
-  private Object keywords;
+    public Object getKeywords() {
+        return this.keywords;
+    }
 
-  @SerializedName("needHidden")
-  private boolean needHidden;
+    public boolean isNeedHidden() {
+        return this.needHidden;
+    }
 
-  @SerializedName("lastReadTime")
-  private String lastReadTime;
+    public String getLastReadTime() {
+        return this.lastReadTime;
+    }
 
-  @SerializedName("icon")
-  private String icon;
+    public String getIcon() {
+        return this.icon;
+    }
 
-  @SerializedName("title")
-  private String title;
+    public String getTitle() {
+        return this.title;
+    }
 
-  @SerializedName("type")
-  private int type;
+    public int getType() {
+        return this.type;
+    }
 
-  @SerializedName("content")
-  private String content;
+    public String getContent() {
+        return this.content;
+    }
 
-  @SerializedName("threadId")
-  private String threadId;
+    public String getThreadId() {
+        return this.threadId;
+    }
 
-  @SerializedName("latestActivityTime")
-  private String latestActivityTime;
+    public String getLatestActivityTime() {
+        return this.latestActivityTime;
+    }
 
-  @SerializedName("uid")
-  private String uid;
+    public String getUid() {
+        return this.uid;
+    }
 
-  @SerializedName("ndcId")
-  private int ndcId;
+    public int getNdcId() {
+        return this.ndcId;
+    }
 
-  @SerializedName("createdTime")
-  private Object createdTime;
+    public Object getCreatedTime() {
+        return this.createdTime;
+    }
 
-  @SerializedName("alertOption")
-  private int alertOption;
+    public int getAlertOption() {
+        return this.alertOption;
+    }
 
-  @SerializedName("membersCount")
-  private int membersCount;
+    public int getMembersCount() {
+        return this.membersCount;
+    }
 
-  @SerializedName("membersSummary")
-  private List<MembersSummaryItem> membersSummary;
+    public List<MembersSummaryItem> getMembersSummary() {
+        return this.membersSummary;
+    }
 
-  @SerializedName("isPinned")
-  private boolean isPinned;
+    public boolean isIsPinned() {
+        return this.isPinned;
+    }
 
-  @SerializedName("author")
-  private Author author;
+    public Author getAuthor() {
+        return this.author;
+    }
 
-  @SerializedName("userAddedTopicList")
-  private List<Object> userAddedTopicList;
+    public List<Object> getUserAddedTopicList() {
+        return this.userAddedTopicList;
+    }
 
-  @SerializedName("lastMessageSummary")
-  private LastMessageSummary lastMessageSummary;
+    public LastMessageSummary getLastMessageSummary() {
+        return this.lastMessageSummary;
+    }
 
-  @SerializedName("membershipStatus")
-  private int membershipStatus;
+    public int getMembershipStatus() {
+        return this.membershipStatus;
+    }
 
-  @SerializedName("condition")
-  private int condition;
+    public int getCondition() {
+        return this.condition;
+    }
 
-  @SerializedName("extensions")
-  private Extensions extensions;
+    public Extensions getExtensions() {
+        return this.extensions;
+    }
 
-  @SerializedName("strategyInfo")
-  private String strategyInfo;
+    public String getStrategyInfo() {
+        return this.strategyInfo;
+    }
 
-  @SerializedName("status")
-  private int status;
+    public int getStatus() {
+        return this.status;
+    }
 
-  @SerializedName("publishToGlobal")
-  private int publishToGlobal;
-
-  public Object getModifiedTime() {
-    return modifiedTime;
-  }
-
-  public int getMembersQuota() {
-    return membersQuota;
-  }
-
-  public Object getKeywords() {
-    return keywords;
-  }
-
-  public boolean isNeedHidden() {
-    return needHidden;
-  }
-
-  public String getLastReadTime() {
-    return lastReadTime;
-  }
-
-  public String getIcon() {
-    return icon;
-  }
-
-  public String getTitle() {
-    return title;
-  }
-
-  public int getType() {
-    return type;
-  }
-
-  public String getContent() {
-    return content;
-  }
-
-  public String getThreadId() {
-    return threadId;
-  }
-
-  public String getLatestActivityTime() {
-    return latestActivityTime;
-  }
-
-  public String getUid() {
-    return uid;
-  }
-
-  public int getNdcId() {
-    return ndcId;
-  }
-
-  public Object getCreatedTime() {
-    return createdTime;
-  }
-
-  public int getAlertOption() {
-    return alertOption;
-  }
-
-  public int getMembersCount() {
-    return membersCount;
-  }
-
-  public List<MembersSummaryItem> getMembersSummary() {
-    return membersSummary;
-  }
-
-  public boolean isIsPinned() {
-    return isPinned;
-  }
-
-  public Author getAuthor() {
-    return author;
-  }
-
-  public List<Object> getUserAddedTopicList() {
-    return userAddedTopicList;
-  }
-
-  public LastMessageSummary getLastMessageSummary() {
-    return lastMessageSummary;
-  }
-
-  public int getMembershipStatus() {
-    return membershipStatus;
-  }
-
-  public int getCondition() {
-    return condition;
-  }
-
-  public Extensions getExtensions() {
-    return extensions;
-  }
-
-  public String getStrategyInfo() {
-    return strategyInfo;
-  }
-
-  public int getStatus() {
-    return status;
-  }
-
-  public int getPublishToGlobal() {
-    return publishToGlobal;
-  }
+    public int getPublishToGlobal() {
+        return this.publishToGlobal;
+    }
 }
+

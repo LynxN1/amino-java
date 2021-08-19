@@ -2,119 +2,105 @@ package amino.models.response.thread_list;
 
 import com.google.gson.JsonElement;
 import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class Extensions {
+    @SerializedName(value="lastMembersSummaryUpdateTime")
+    private int lastMembersSummaryUpdateTime;
+    @SerializedName(value="coHost")
+    private List<String> coHost;
+    @SerializedName(value="language")
+    private String language;
+    @SerializedName(value="pinAnnouncement")
+    private boolean pinAnnouncement;
+    @SerializedName(value="bm")
+    private List<JsonElement> bm;
+    @SerializedName(value="announcement")
+    private String announcement;
+    @SerializedName(value="membersCanInvite")
+    private boolean membersCanInvite;
+    @SerializedName(value="fansOnly")
+    private boolean fansOnly;
+    @SerializedName(value="visibility")
+    private int visibility;
+    @SerializedName(value="channelType")
+    private int channelType;
+    @SerializedName(value="avchatMemberUidList")
+    private List<String> avchatMemberUidList;
+    @SerializedName(value="creatorUid")
+    private String creatorUid;
+    @SerializedName(value="bannedMemberUidList")
+    private List<String> bannedMemberUidList;
+    @SerializedName(value="viewOnly")
+    private boolean viewOnly;
+    @SerializedName(value="vvChatJoinType")
+    private int vvChatJoinType;
+    @SerializedName(value="screeningRoomPermission")
+    private ScreeningRoomPermission screeningRoomPermission;
 
-  @SerializedName("lastMembersSummaryUpdateTime")
-  private int lastMembersSummaryUpdateTime;
+    public int getLastMembersSummaryUpdateTime() {
+        return this.lastMembersSummaryUpdateTime;
+    }
 
-  @SerializedName("coHost")
-  private List<String> coHost;
+    public List<String> getCoHost() {
+        return this.coHost;
+    }
 
-  @SerializedName("language")
-  private String language;
+    public String getLanguage() {
+        return this.language;
+    }
 
-  @SerializedName("pinAnnouncement")
-  private boolean pinAnnouncement;
+    public boolean isPinAnnouncement() {
+        return this.pinAnnouncement;
+    }
 
-  @SerializedName("bm")
-  private List<JsonElement> bm;
+    public List<JsonElement> getBm() {
+        return this.bm;
+    }
 
-  @SerializedName("announcement")
-  private String announcement;
+    public String getAnnouncement() {
+        return this.announcement;
+    }
 
-  @SerializedName("membersCanInvite")
-  private boolean membersCanInvite;
+    public boolean isMembersCanInvite() {
+        return this.membersCanInvite;
+    }
 
-  @SerializedName("fansOnly")
-  private boolean fansOnly;
+    public boolean isFansOnly() {
+        return this.fansOnly;
+    }
 
-  @SerializedName("visibility")
-  private int visibility;
+    public int getVisibility() {
+        return this.visibility;
+    }
 
-  @SerializedName("channelType")
-  private int channelType;
+    public int getChannelType() {
+        return this.channelType;
+    }
 
-  @SerializedName("avchatMemberUidList")
-  private List<String> avchatMemberUidList;
+    public List<String> getAvchatMemberUidList() {
+        return this.avchatMemberUidList;
+    }
 
-  @SerializedName("creatorUid")
-  private String creatorUid;
+    public String getCreatorUid() {
+        return this.creatorUid;
+    }
 
-  @SerializedName("bannedMemberUidList")
-  private List<String> bannedMemberUidList;
+    public List<String> getBannedMemberUidList() {
+        return this.bannedMemberUidList;
+    }
 
-  @SerializedName("viewOnly")
-  private boolean viewOnly;
+    public boolean isViewOnly() {
+        return this.viewOnly;
+    }
 
-  @SerializedName("vvChatJoinType")
-  private int vvChatJoinType;
+    public int getVvChatJoinType() {
+        return this.vvChatJoinType;
+    }
 
-  @SerializedName("screeningRoomPermission")
-  private ScreeningRoomPermission screeningRoomPermission;
-
-  public int getLastMembersSummaryUpdateTime() {
-    return lastMembersSummaryUpdateTime;
-  }
-
-  public List<String> getCoHost() {
-    return coHost;
-  }
-
-  public String getLanguage() {
-    return language;
-  }
-
-  public boolean isPinAnnouncement() {
-    return pinAnnouncement;
-  }
-
-  public List<JsonElement> getBm() {
-    return bm;
-  }
-
-  public String getAnnouncement() {
-    return announcement;
-  }
-
-  public boolean isMembersCanInvite() {
-    return membersCanInvite;
-  }
-
-  public boolean isFansOnly() {
-    return fansOnly;
-  }
-
-  public int getVisibility() {
-    return visibility;
-  }
-
-  public int getChannelType() {
-    return channelType;
-  }
-
-  public List<String> getAvchatMemberUidList() {
-    return avchatMemberUidList;
-  }
-
-  public String getCreatorUid() {
-    return creatorUid;
-  }
-
-  public List<String> getBannedMemberUidList() {
-    return bannedMemberUidList;
-  }
-
-  public boolean isViewOnly() {
-    return viewOnly;
-  }
-
-  public int getVvChatJoinType() {
-    return vvChatJoinType;
-  }
-
-  public ScreeningRoomPermission getScreeningRoomPermission() {
-    return screeningRoomPermission;
-  }
+    public ScreeningRoomPermission getScreeningRoomPermission() {
+        return this.screeningRoomPermission;
+    }
 }
+

@@ -3,32 +3,29 @@ package amino.models.response.ndc_account;
 import com.google.gson.annotations.SerializedName;
 
 public class Extensions {
+    @SerializedName(value="privilegeOfChatInviteRequest")
+    private int privilegeOfChatInviteRequest;
+    @SerializedName(value="privilegeOfCommentOnUserProfile")
+    private int privilegeOfCommentOnUserProfile;
+    @SerializedName(value="style")
+    private Style style;
+    @SerializedName(value="defaultBubbleId")
+    private String defaultBubbleId;
 
-  @SerializedName("privilegeOfChatInviteRequest")
-  private int privilegeOfChatInviteRequest;
+    public int getPrivilegeOfChatInviteRequest() {
+        return this.privilegeOfChatInviteRequest;
+    }
 
-  @SerializedName("privilegeOfCommentOnUserProfile")
-  private int privilegeOfCommentOnUserProfile;
+    public int getPrivilegeOfCommentOnUserProfile() {
+        return this.privilegeOfCommentOnUserProfile;
+    }
 
-  @SerializedName("style")
-  private Style style;
+    public Style getStyle() {
+        return this.style;
+    }
 
-  @SerializedName("defaultBubbleId")
-  private String defaultBubbleId;
-
-  public int getPrivilegeOfChatInviteRequest() {
-    return privilegeOfChatInviteRequest;
-  }
-
-  public int getPrivilegeOfCommentOnUserProfile() {
-    return privilegeOfCommentOnUserProfile;
-  }
-
-  public Style getStyle() {
-    return style;
-  }
-
-  public String getDefaultBubbleId() {
-    return defaultBubbleId;
-  }
+    public String getDefaultBubbleId() {
+        return this.defaultBubbleId;
+    }
 }
+

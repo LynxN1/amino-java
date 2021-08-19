@@ -2,61 +2,54 @@ package amino.models.response.error_body;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ErrorBody{
+public class ErrorBody {
+    @SerializedName(value="api:timestamp")
+    private String apiTimestamp;
+    @SerializedName(value="okButtonText")
+    private String okButtonText;
+    @SerializedName(value="api:duration")
+    private String apiDuration;
+    @SerializedName(value="api:statuscode")
+    private int apiStatusCode;
+    @SerializedName(value="title")
+    private String title;
+    @SerializedName(value="url")
+    private String url;
+    @SerializedName(value="api:message")
+    private String apiMessage;
+    @SerializedName(value="cancelButtonText")
+    private Object cancelButtonText;
 
-	@SerializedName("api:timestamp")
-	private String apiTimestamp;
+    public String getApiTimestamp() {
+        return this.apiTimestamp;
+    }
 
-	@SerializedName("okButtonText")
-	private String okButtonText;
+    public String getOkButtonText() {
+        return this.okButtonText;
+    }
 
-	@SerializedName("api:duration")
-	private String apiDuration;
+    public String getApiDuration() {
+        return this.apiDuration;
+    }
 
-	@SerializedName("api:statuscode")
-	private int apiStatusCode;
+    public int getApiStatusCode() {
+        return this.apiStatusCode;
+    }
 
-	@SerializedName("title")
-	private String title;
+    public String getTitle() {
+        return this.title;
+    }
 
-	@SerializedName("url")
-	private String url;
+    public String getUrl() {
+        return this.url;
+    }
 
-	@SerializedName("api:message")
-	private String apiMessage;
+    public String getApiMessage() {
+        return this.apiMessage;
+    }
 
-	@SerializedName("cancelButtonText")
-	private Object cancelButtonText;
-
-	public String getApiTimestamp(){
-		return apiTimestamp;
-	}
-
-	public String getOkButtonText(){
-		return okButtonText;
-	}
-
-	public String getApiDuration(){
-		return apiDuration;
-	}
-
-	public int getApiStatusCode(){
-		return apiStatusCode;
-	}
-
-	public String getTitle(){
-		return title;
-	}
-
-	public String getUrl(){
-		return url;
-	}
-
-	public String getApiMessage(){
-		return apiMessage;
-	}
-
-	public Object getCancelButtonText(){
-		return cancelButtonText;
-	}
+    public Object getCancelButtonText() {
+        return this.cancelButtonText;
+    }
 }
+

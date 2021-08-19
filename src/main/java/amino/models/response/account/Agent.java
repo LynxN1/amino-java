@@ -3,102 +3,89 @@ package amino.models.response.account;
 import com.google.gson.annotations.SerializedName;
 
 public class Agent {
+    @SerializedName(value="followingStatus")
+    private int followingStatus;
+    @SerializedName(value="membersCount")
+    private int membersCount;
+    @SerializedName(value="role")
+    private Object role;
+    @SerializedName(value="level")
+    private int level;
+    @SerializedName(value="icon")
+    private Object icon;
+    @SerializedName(value="reputation")
+    private int reputation;
+    @SerializedName(value="membershipStatus")
+    private int membershipStatus;
+    @SerializedName(value="uid")
+    private String uid;
+    @SerializedName(value="accountMembershipStatus")
+    private int accountMembershipStatus;
+    @SerializedName(value="ndcId")
+    private Object ndcId;
+    @SerializedName(value="isGlobal")
+    private boolean isGlobal;
+    @SerializedName(value="nickname")
+    private Object nickname;
+    @SerializedName(value="isNicknameVerified")
+    private boolean isNicknameVerified;
+    @SerializedName(value="status")
+    private Object status;
 
-  @SerializedName("followingStatus")
-  private int followingStatus;
+    public int getFollowingStatus() {
+        return this.followingStatus;
+    }
 
-  @SerializedName("membersCount")
-  private int membersCount;
+    public int getMembersCount() {
+        return this.membersCount;
+    }
 
-  @SerializedName("role")
-  private Object role;
+    public Object getRole() {
+        return this.role;
+    }
 
-  @SerializedName("level")
-  private int level;
+    public int getLevel() {
+        return this.level;
+    }
 
-  @SerializedName("icon")
-  private Object icon;
+    public Object getIcon() {
+        return this.icon;
+    }
 
-  @SerializedName("reputation")
-  private int reputation;
+    public int getReputation() {
+        return this.reputation;
+    }
 
-  @SerializedName("membershipStatus")
-  private int membershipStatus;
+    public int getMembershipStatus() {
+        return this.membershipStatus;
+    }
 
-  @SerializedName("uid")
-  private String uid;
+    public String getUid() {
+        return this.uid;
+    }
 
-  @SerializedName("accountMembershipStatus")
-  private int accountMembershipStatus;
+    public int getAccountMembershipStatus() {
+        return this.accountMembershipStatus;
+    }
 
-  @SerializedName("ndcId")
-  private Object ndcId;
+    public Object getNdcId() {
+        return this.ndcId;
+    }
 
-  @SerializedName("isGlobal")
-  private boolean isGlobal;
+    public boolean isIsGlobal() {
+        return this.isGlobal;
+    }
 
-  @SerializedName("nickname")
-  private Object nickname;
+    public Object getNickname() {
+        return this.nickname;
+    }
 
-  @SerializedName("isNicknameVerified")
-  private boolean isNicknameVerified;
+    public boolean isIsNicknameVerified() {
+        return this.isNicknameVerified;
+    }
 
-  @SerializedName("status")
-  private Object status;
-
-  public int getFollowingStatus() {
-    return followingStatus;
-  }
-
-  public int getMembersCount() {
-    return membersCount;
-  }
-
-  public Object getRole() {
-    return role;
-  }
-
-  public int getLevel() {
-    return level;
-  }
-
-  public Object getIcon() {
-    return icon;
-  }
-
-  public int getReputation() {
-    return reputation;
-  }
-
-  public int getMembershipStatus() {
-    return membershipStatus;
-  }
-
-  public String getUid() {
-    return uid;
-  }
-
-  public int getAccountMembershipStatus() {
-    return accountMembershipStatus;
-  }
-
-  public Object getNdcId() {
-    return ndcId;
-  }
-
-  public boolean isIsGlobal() {
-    return isGlobal;
-  }
-
-  public Object getNickname() {
-    return nickname;
-  }
-
-  public boolean isIsNicknameVerified() {
-    return isNicknameVerified;
-  }
-
-  public Object getStatus() {
-    return status;
-  }
+    public Object getStatus() {
+        return this.status;
+    }
 }
+

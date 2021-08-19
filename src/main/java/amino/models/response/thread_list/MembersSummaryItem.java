@@ -3,46 +3,41 @@ package amino.models.response.thread_list;
 import com.google.gson.annotations.SerializedName;
 
 public class MembersSummaryItem {
+    @SerializedName(value="uid")
+    private String uid;
+    @SerializedName(value="role")
+    private int role;
+    @SerializedName(value="nickname")
+    private String nickname;
+    @SerializedName(value="icon")
+    private String icon;
+    @SerializedName(value="membershipStatus")
+    private int membershipStatus;
+    @SerializedName(value="status")
+    private int status;
 
-  @SerializedName("uid")
-  private String uid;
+    public String getUid() {
+        return this.uid;
+    }
 
-  @SerializedName("role")
-  private int role;
+    public int getRole() {
+        return this.role;
+    }
 
-  @SerializedName("nickname")
-  private String nickname;
+    public String getNickname() {
+        return this.nickname;
+    }
 
-  @SerializedName("icon")
-  private String icon;
+    public String getIcon() {
+        return this.icon;
+    }
 
-  @SerializedName("membershipStatus")
-  private int membershipStatus;
+    public int getMembershipStatus() {
+        return this.membershipStatus;
+    }
 
-  @SerializedName("status")
-  private int status;
-
-  public String getUid() {
-    return uid;
-  }
-
-  public int getRole() {
-    return role;
-  }
-
-  public String getNickname() {
-    return nickname;
-  }
-
-  public String getIcon() {
-    return icon;
-  }
-
-  public int getMembershipStatus() {
-    return membershipStatus;
-  }
-
-  public int getStatus() {
-    return status;
-  }
+    public int getStatus() {
+        return this.status;
+    }
 }
+

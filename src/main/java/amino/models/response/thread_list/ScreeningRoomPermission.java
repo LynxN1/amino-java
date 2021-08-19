@@ -4,18 +4,17 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class ScreeningRoomPermission {
+    @SerializedName(value="uidList")
+    private List<Object> uidList;
+    @SerializedName(value="action")
+    private int action;
 
-  @SerializedName("uidList")
-  private List<Object> uidList;
+    public List<Object> getUidList() {
+        return this.uidList;
+    }
 
-  @SerializedName("action")
-  private int action;
-
-  public List<Object> getUidList() {
-    return uidList;
-  }
-
-  public int getAction() {
-    return action;
-  }
+    public int getAction() {
+        return this.action;
+    }
 }
+

@@ -1,42 +1,37 @@
 package amino.models.response.account;
 
-import amino.models.response.error_body.ErrorBody;
 import com.google.gson.annotations.SerializedName;
 
 public class AccountData {
+    @SerializedName(value="auid")
+    private String auid;
+    @SerializedName(value="secret")
+    private String secret;
+    @SerializedName(value="account")
+    private Account account;
+    @SerializedName(value="userProfile")
+    private UserProfile userProfile;
+    @SerializedName(value="sid")
+    private String sid;
 
-  @SerializedName("auid")
-  private String auid;
+    public String getAuid() {
+        return this.auid;
+    }
 
-  @SerializedName("secret")
-  private String secret;
+    public String getSecret() {
+        return this.secret;
+    }
 
-  @SerializedName("account")
-  private Account account;
+    public Account getAccount() {
+        return this.account;
+    }
 
-  @SerializedName("userProfile")
-  private UserProfile userProfile;
+    public UserProfile getUserProfile() {
+        return this.userProfile;
+    }
 
-  @SerializedName("sid")
-  private String sid;
-
-  public String getAuid() {
-    return auid;
-  }
-
-  public String getSecret() {
-    return secret;
-  }
-
-  public Account getAccount() {
-    return account;
-  }
-
-  public UserProfile getUserProfile() {
-    return userProfile;
-  }
-
-  public String getSid() {
-    return sid;
-  }
+    public String getSid() {
+        return this.sid;
+    }
 }
+

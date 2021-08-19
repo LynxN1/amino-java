@@ -3,32 +3,29 @@ package amino.models.response.sub_clients;
 import com.google.gson.annotations.SerializedName;
 
 public class ThemePack {
+    @SerializedName(value="themeColor")
+    private String themeColor;
+    @SerializedName(value="themePackUrl")
+    private String themePackUrl;
+    @SerializedName(value="themePackHash")
+    private String themePackHash;
+    @SerializedName(value="themePackRevision")
+    private int themePackRevision;
 
-  @SerializedName("themeColor")
-  private String themeColor;
+    public String getThemeColor() {
+        return this.themeColor;
+    }
 
-  @SerializedName("themePackUrl")
-  private String themePackUrl;
+    public String getThemePackUrl() {
+        return this.themePackUrl;
+    }
 
-  @SerializedName("themePackHash")
-  private String themePackHash;
+    public String getThemePackHash() {
+        return this.themePackHash;
+    }
 
-  @SerializedName("themePackRevision")
-  private int themePackRevision;
-
-  public String getThemeColor() {
-    return themeColor;
-  }
-
-  public String getThemePackUrl() {
-    return themePackUrl;
-  }
-
-  public String getThemePackHash() {
-    return themePackHash;
-  }
-
-  public int getThemePackRevision() {
-    return themePackRevision;
-  }
+    public int getThemePackRevision() {
+        return this.themePackRevision;
+    }
 }
+

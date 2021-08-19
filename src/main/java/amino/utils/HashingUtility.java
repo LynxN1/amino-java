@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.GeneralSecurityException;
 import java.util.Base64;
 
-public class HashingUtility {
+public final class HashingUtility {
     public static String computeSignature(String baseString) throws GeneralSecurityException {
         var mac = Mac.getInstance("HmacSHA1");
         mac.init(new SecretKeySpec(new BigInteger("715ffccf8c0536f186bf127a16c14682827fc581", 16).toByteArray(), "HmacSHA1"));

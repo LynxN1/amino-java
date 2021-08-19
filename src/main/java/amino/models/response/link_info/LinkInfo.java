@@ -2,54 +2,42 @@ package amino.models.response.link_info;
 
 import com.google.gson.annotations.SerializedName;
 
-public class LinkInfo{
+public class LinkInfo {
+    @SerializedName(value="fullPath")
+    private String fullPath;
+    @SerializedName(value="ndcId")
+    private int ndcId;
+    @SerializedName(value="targetCode")
+    private int targetCode;
+    @SerializedName(value="objectId")
+    private String objectId;
+    @SerializedName(value="shortCode")
+    private String shortCode;
+    @SerializedName(value="objectType")
+    private int objectType;
 
-	@SerializedName("linkInfoV2")
-	private LinkInfoV2 linkInfoV2;
+    public String getFullPath() {
+        return this.fullPath;
+    }
 
-	@SerializedName("fullPath")
-	private Object fullPath;
+    public int getNdcId() {
+        return this.ndcId;
+    }
 
-	@SerializedName("ndcId")
-	private int ndcId;
+    public int getTargetCode() {
+        return this.targetCode;
+    }
 
-	@SerializedName("targetCode")
-	private int targetCode;
+    public String getObjectId() {
+        return this.objectId;
+    }
 
-	@SerializedName("objectId")
-	private String objectId;
+    public String getShortCode() {
+        return this.shortCode;
+    }
 
-	@SerializedName("shortCode")
-	private Object shortCode;
-
-	@SerializedName("objectType")
-	private int objectType;
-
-	public LinkInfoV2 getLinkInfoV2(){
-		return linkInfoV2;
-	}
-
-	public Object getFullPath(){
-		return fullPath;
-	}
-
-	public int getNdcId(){
-		return ndcId;
-	}
-
-	public int getTargetCode(){
-		return targetCode;
-	}
-
-	public String getObjectId(){
-		return objectId;
-	}
-
-	public Object getShortCode(){
-		return shortCode;
-	}
-
-	public int getObjectType(){
-		return objectType;
-	}
+    public int getObjectType() {
+        return this.objectType;
+    }
 }
+

@@ -3,81 +3,71 @@ package amino.models.response.account;
 import com.google.gson.annotations.SerializedName;
 
 public class Extensions {
+    @SerializedName(value="privilegeOfChatInviteRequest")
+    private int privilegeOfChatInviteRequest;
+    @SerializedName(value="privilegeOfCommentOnUserProfile")
+    private int privilegeOfCommentOnUserProfile;
+    @SerializedName(value="visitSettings")
+    private VisitSettings visitSettings;
+    @SerializedName(value="mediaLabAdsMigrationJuly2020")
+    private boolean mediaLabAdsMigrationJuly2020;
+    @SerializedName(value="contentLanguage")
+    private String contentLanguage;
+    @SerializedName(value="adsLevel")
+    private int adsLevel;
+    @SerializedName(value="mediaLabAdsMigrationAugust2020")
+    private boolean mediaLabAdsMigrationAugust2020;
+    @SerializedName(value="adsFlags")
+    private int adsFlags;
+    @SerializedName(value="deviceInfo")
+    private DeviceInfo deviceInfo;
+    @SerializedName(value="avatarFrameId")
+    private String avatarFrameId;
+    @SerializedName(value="adsEnabled")
+    private boolean adsEnabled;
 
-  @SerializedName("privilegeOfChatInviteRequest")
-  private int privilegeOfChatInviteRequest;
+    public int getPrivilegeOfChatInviteRequest() {
+        return this.privilegeOfChatInviteRequest;
+    }
 
-  @SerializedName("privilegeOfCommentOnUserProfile")
-  private int privilegeOfCommentOnUserProfile;
+    public int getPrivilegeOfCommentOnUserProfile() {
+        return this.privilegeOfCommentOnUserProfile;
+    }
 
-  @SerializedName("visitSettings")
-  private VisitSettings visitSettings;
+    public VisitSettings getVisitSettings() {
+        return this.visitSettings;
+    }
 
-  @SerializedName("mediaLabAdsMigrationJuly2020")
-  private boolean mediaLabAdsMigrationJuly2020;
+    public boolean isMediaLabAdsMigrationJuly2020() {
+        return this.mediaLabAdsMigrationJuly2020;
+    }
 
-  @SerializedName("contentLanguage")
-  private String contentLanguage;
+    public String getContentLanguage() {
+        return this.contentLanguage;
+    }
 
-  @SerializedName("adsLevel")
-  private int adsLevel;
+    public int getAdsLevel() {
+        return this.adsLevel;
+    }
 
-  @SerializedName("mediaLabAdsMigrationAugust2020")
-  private boolean mediaLabAdsMigrationAugust2020;
+    public boolean isMediaLabAdsMigrationAugust2020() {
+        return this.mediaLabAdsMigrationAugust2020;
+    }
 
-  @SerializedName("adsFlags")
-  private int adsFlags;
+    public int getAdsFlags() {
+        return this.adsFlags;
+    }
 
-  @SerializedName("deviceInfo")
-  private DeviceInfo deviceInfo;
+    public DeviceInfo getDeviceInfo() {
+        return this.deviceInfo;
+    }
 
-  @SerializedName("avatarFrameId")
-  private String avatarFrameId;
+    public String getAvatarFrameId() {
+        return this.avatarFrameId;
+    }
 
-  @SerializedName("adsEnabled")
-  private boolean adsEnabled;
-
-  public int getPrivilegeOfChatInviteRequest() {
-    return privilegeOfChatInviteRequest;
-  }
-
-  public int getPrivilegeOfCommentOnUserProfile() {
-    return privilegeOfCommentOnUserProfile;
-  }
-
-  public VisitSettings getVisitSettings() {
-    return visitSettings;
-  }
-
-  public boolean isMediaLabAdsMigrationJuly2020() {
-    return mediaLabAdsMigrationJuly2020;
-  }
-
-  public String getContentLanguage() {
-    return contentLanguage;
-  }
-
-  public int getAdsLevel() {
-    return adsLevel;
-  }
-
-  public boolean isMediaLabAdsMigrationAugust2020() {
-    return mediaLabAdsMigrationAugust2020;
-  }
-
-  public int getAdsFlags() {
-    return adsFlags;
-  }
-
-  public DeviceInfo getDeviceInfo() {
-    return deviceInfo;
-  }
-
-  public String getAvatarFrameId() {
-    return avatarFrameId;
-  }
-
-  public boolean isAdsEnabled() {
-    return adsEnabled;
-  }
+    public boolean isAdsEnabled() {
+        return this.adsEnabled;
+    }
 }
+

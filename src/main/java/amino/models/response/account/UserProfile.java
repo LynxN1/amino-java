@@ -1,244 +1,213 @@
 package amino.models.response.account;
 
+import amino.models.response.account.AvatarFrame;
+import amino.models.response.account.Extensions;
 import com.google.gson.annotations.SerializedName;
 
 public class UserProfile {
+    @SerializedName(value="modifiedTime")
+    private String modifiedTime;
+    @SerializedName(value="role")
+    private int role;
+    @SerializedName(value="mood")
+    private Object mood;
+    @SerializedName(value="onlineStatus")
+    private int onlineStatus;
+    @SerializedName(value="icon")
+    private String icon;
+    @SerializedName(value="reputation")
+    private int reputation;
+    @SerializedName(value="itemsCount")
+    private int itemsCount;
+    @SerializedName(value="content")
+    private String content;
+    @SerializedName(value="aminoId")
+    private String aminoId;
+    @SerializedName(value="uid")
+    private String uid;
+    @SerializedName(value="accountMembershipStatus")
+    private int accountMembershipStatus;
+    @SerializedName(value="postsCount")
+    private int postsCount;
+    @SerializedName(value="ndcId")
+    private int ndcId;
+    @SerializedName(value="avatarFrame")
+    private AvatarFrame avatarFrame;
+    @SerializedName(value="nickname")
+    private String nickname;
+    @SerializedName(value="pushEnabled")
+    private boolean pushEnabled;
+    @SerializedName(value="createdTime")
+    private String createdTime;
+    @SerializedName(value="consecutiveCheckInDays")
+    private Object consecutiveCheckInDays;
+    @SerializedName(value="blogsCount")
+    private int blogsCount;
+    @SerializedName(value="followingStatus")
+    private int followingStatus;
+    @SerializedName(value="moodSticker")
+    private Object moodSticker;
+    @SerializedName(value="membersCount")
+    private int membersCount;
+    @SerializedName(value="level")
+    private int level;
+    @SerializedName(value="membershipStatus")
+    private int membershipStatus;
+    @SerializedName(value="storiesCount")
+    private int storiesCount;
+    @SerializedName(value="notificationSubscriptionStatus")
+    private int notificationSubscriptionStatus;
+    @SerializedName(value="extensions")
+    private Extensions extensions;
+    @SerializedName(value="mediaList")
+    private Object mediaList;
+    @SerializedName(value="commentsCount")
+    private int commentsCount;
+    @SerializedName(value="isGlobal")
+    private boolean isGlobal;
+    @SerializedName(value="isNicknameVerified")
+    private boolean isNicknameVerified;
+    @SerializedName(value="joinedCount")
+    private int joinedCount;
+    @SerializedName(value="avatarFrameId")
+    private String avatarFrameId;
+    @SerializedName(value="status")
+    private int status;
+
+    public String getModifiedTime() {
+        return this.modifiedTime;
+    }
+
+    public int getRole() {
+        return this.role;
+    }
+
+    public Object getMood() {
+        return this.mood;
+    }
+
+    public int getOnlineStatus() {
+        return this.onlineStatus;
+    }
+
+    public String getIcon() {
+        return this.icon;
+    }
+
+    public int getReputation() {
+        return this.reputation;
+    }
+
+    public int getItemsCount() {
+        return this.itemsCount;
+    }
+
+    public String getContent() {
+        return this.content;
+    }
+
+    public String getAminoId() {
+        return this.aminoId;
+    }
 
-  @SerializedName("modifiedTime")
-  private String modifiedTime;
+    public String getUid() {
+        return this.uid;
+    }
 
-  @SerializedName("role")
-  private int role;
+    public int getAccountMembershipStatus() {
+        return this.accountMembershipStatus;
+    }
 
-  @SerializedName("mood")
-  private Object mood;
+    public int getPostsCount() {
+        return this.postsCount;
+    }
 
-  @SerializedName("onlineStatus")
-  private int onlineStatus;
+    public int getNdcId() {
+        return this.ndcId;
+    }
 
-  @SerializedName("icon")
-  private String icon;
+    public AvatarFrame getAvatarFrame() {
+        return this.avatarFrame;
+    }
 
-  @SerializedName("reputation")
-  private int reputation;
+    public String getNickname() {
+        return this.nickname;
+    }
 
-  @SerializedName("itemsCount")
-  private int itemsCount;
+    public boolean isPushEnabled() {
+        return this.pushEnabled;
+    }
 
-  @SerializedName("content")
-  private String content;
+    public String getCreatedTime() {
+        return this.createdTime;
+    }
 
-  @SerializedName("aminoId")
-  private String aminoId;
+    public Object getConsecutiveCheckInDays() {
+        return this.consecutiveCheckInDays;
+    }
 
-  @SerializedName("uid")
-  private String uid;
+    public int getBlogsCount() {
+        return this.blogsCount;
+    }
 
-  @SerializedName("accountMembershipStatus")
-  private int accountMembershipStatus;
+    public int getFollowingStatus() {
+        return this.followingStatus;
+    }
 
-  @SerializedName("postsCount")
-  private int postsCount;
+    public Object getMoodSticker() {
+        return this.moodSticker;
+    }
 
-  @SerializedName("ndcId")
-  private int ndcId;
+    public int getMembersCount() {
+        return this.membersCount;
+    }
 
-  @SerializedName("avatarFrame")
-  private AvatarFrame avatarFrame;
+    public int getLevel() {
+        return this.level;
+    }
 
-  @SerializedName("nickname")
-  private String nickname;
+    public int getMembershipStatus() {
+        return this.membershipStatus;
+    }
 
-  @SerializedName("pushEnabled")
-  private boolean pushEnabled;
+    public int getStoriesCount() {
+        return this.storiesCount;
+    }
 
-  @SerializedName("createdTime")
-  private String createdTime;
+    public int getNotificationSubscriptionStatus() {
+        return this.notificationSubscriptionStatus;
+    }
 
-  @SerializedName("consecutiveCheckInDays")
-  private Object consecutiveCheckInDays;
+    public Extensions getExtensions() {
+        return this.extensions;
+    }
 
-  @SerializedName("blogsCount")
-  private int blogsCount;
+    public Object getMediaList() {
+        return this.mediaList;
+    }
 
-  @SerializedName("followingStatus")
-  private int followingStatus;
+    public int getCommentsCount() {
+        return this.commentsCount;
+    }
 
-  @SerializedName("moodSticker")
-  private Object moodSticker;
+    public boolean isIsGlobal() {
+        return this.isGlobal;
+    }
 
-  @SerializedName("membersCount")
-  private int membersCount;
+    public boolean isIsNicknameVerified() {
+        return this.isNicknameVerified;
+    }
 
-  @SerializedName("level")
-  private int level;
+    public int getJoinedCount() {
+        return this.joinedCount;
+    }
 
-  @SerializedName("membershipStatus")
-  private int membershipStatus;
+    public String getAvatarFrameId() {
+        return this.avatarFrameId;
+    }
 
-  @SerializedName("storiesCount")
-  private int storiesCount;
-
-  @SerializedName("notificationSubscriptionStatus")
-  private int notificationSubscriptionStatus;
-
-  @SerializedName("extensions")
-  private Extensions extensions;
-
-  @SerializedName("mediaList")
-  private Object mediaList;
-
-  @SerializedName("commentsCount")
-  private int commentsCount;
-
-  @SerializedName("isGlobal")
-  private boolean isGlobal;
-
-  @SerializedName("isNicknameVerified")
-  private boolean isNicknameVerified;
-
-  @SerializedName("joinedCount")
-  private int joinedCount;
-
-  @SerializedName("avatarFrameId")
-  private String avatarFrameId;
-
-  @SerializedName("status")
-  private int status;
-
-  public String getModifiedTime() {
-    return modifiedTime;
-  }
-
-  public int getRole() {
-    return role;
-  }
-
-  public Object getMood() {
-    return mood;
-  }
-
-  public int getOnlineStatus() {
-    return onlineStatus;
-  }
-
-  public String getIcon() {
-    return icon;
-  }
-
-  public int getReputation() {
-    return reputation;
-  }
-
-  public int getItemsCount() {
-    return itemsCount;
-  }
-
-  public String getContent() {
-    return content;
-  }
-
-  public String getAminoId() {
-    return aminoId;
-  }
-
-  public String getUid() {
-    return uid;
-  }
-
-  public int getAccountMembershipStatus() {
-    return accountMembershipStatus;
-  }
-
-  public int getPostsCount() {
-    return postsCount;
-  }
-
-  public int getNdcId() {
-    return ndcId;
-  }
-
-  public AvatarFrame getAvatarFrame() {
-    return avatarFrame;
-  }
-
-  public String getNickname() {
-    return nickname;
-  }
-
-  public boolean isPushEnabled() {
-    return pushEnabled;
-  }
-
-  public String getCreatedTime() {
-    return createdTime;
-  }
-
-  public Object getConsecutiveCheckInDays() {
-    return consecutiveCheckInDays;
-  }
-
-  public int getBlogsCount() {
-    return blogsCount;
-  }
-
-  public int getFollowingStatus() {
-    return followingStatus;
-  }
-
-  public Object getMoodSticker() {
-    return moodSticker;
-  }
-
-  public int getMembersCount() {
-    return membersCount;
-  }
-
-  public int getLevel() {
-    return level;
-  }
-
-  public int getMembershipStatus() {
-    return membershipStatus;
-  }
-
-  public int getStoriesCount() {
-    return storiesCount;
-  }
-
-  public int getNotificationSubscriptionStatus() {
-    return notificationSubscriptionStatus;
-  }
-
-  public Extensions getExtensions() {
-    return extensions;
-  }
-
-  public Object getMediaList() {
-    return mediaList;
-  }
-
-  public int getCommentsCount() {
-    return commentsCount;
-  }
-
-  public boolean isIsGlobal() {
-    return isGlobal;
-  }
-
-  public boolean isIsNicknameVerified() {
-    return isNicknameVerified;
-  }
-
-  public int getJoinedCount() {
-    return joinedCount;
-  }
-
-  public String getAvatarFrameId() {
-    return avatarFrameId;
-  }
-
-  public int getStatus() {
-    return status;
-  }
+    public int getStatus() {
+        return this.status;
+    }
 }
+

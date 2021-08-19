@@ -3,60 +3,53 @@ package amino.models.response.thread_list;
 import com.google.gson.annotations.SerializedName;
 
 public class AvatarFrame {
+    @SerializedName(value="resourceUrl")
+    private String resourceUrl;
+    @SerializedName(value="frameId")
+    private String frameId;
+    @SerializedName(value="ownershipStatus")
+    private Object ownershipStatus;
+    @SerializedName(value="name")
+    private String name;
+    @SerializedName(value="icon")
+    private String icon;
+    @SerializedName(value="frameType")
+    private int frameType;
+    @SerializedName(value="version")
+    private int version;
+    @SerializedName(value="status")
+    private int status;
 
-  @SerializedName("resourceUrl")
-  private String resourceUrl;
+    public String getResourceUrl() {
+        return this.resourceUrl;
+    }
 
-  @SerializedName("frameId")
-  private String frameId;
+    public String getFrameId() {
+        return this.frameId;
+    }
 
-  @SerializedName("ownershipStatus")
-  private Object ownershipStatus;
+    public Object getOwnershipStatus() {
+        return this.ownershipStatus;
+    }
 
-  @SerializedName("name")
-  private String name;
+    public String getName() {
+        return this.name;
+    }
 
-  @SerializedName("icon")
-  private String icon;
+    public String getIcon() {
+        return this.icon;
+    }
 
-  @SerializedName("frameType")
-  private int frameType;
+    public int getFrameType() {
+        return this.frameType;
+    }
 
-  @SerializedName("version")
-  private int version;
+    public int getVersion() {
+        return this.version;
+    }
 
-  @SerializedName("status")
-  private int status;
-
-  public String getResourceUrl() {
-    return resourceUrl;
-  }
-
-  public String getFrameId() {
-    return frameId;
-  }
-
-  public Object getOwnershipStatus() {
-    return ownershipStatus;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public String getIcon() {
-    return icon;
-  }
-
-  public int getFrameType() {
-    return frameType;
-  }
-
-  public int getVersion() {
-    return version;
-  }
-
-  public int getStatus() {
-    return status;
-  }
+    public int getStatus() {
+        return this.status;
+    }
 }
+

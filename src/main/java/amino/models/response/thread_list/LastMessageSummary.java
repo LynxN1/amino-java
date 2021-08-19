@@ -3,60 +3,53 @@ package amino.models.response.thread_list;
 import com.google.gson.annotations.SerializedName;
 
 public class LastMessageSummary {
+    @SerializedName(value="uid")
+    private String uid;
+    @SerializedName(value="mediaValue")
+    private Object mediaValue;
+    @SerializedName(value="messageId")
+    private String messageId;
+    @SerializedName(value="createdTime")
+    private String createdTime;
+    @SerializedName(value="mediaType")
+    private int mediaType;
+    @SerializedName(value="type")
+    private int type;
+    @SerializedName(value="content")
+    private String content;
+    @SerializedName(value="isHidden")
+    private boolean isHidden;
 
-  @SerializedName("uid")
-  private String uid;
+    public String getUid() {
+        return this.uid;
+    }
 
-  @SerializedName("mediaValue")
-  private Object mediaValue;
+    public Object getMediaValue() {
+        return this.mediaValue;
+    }
 
-  @SerializedName("messageId")
-  private String messageId;
+    public String getMessageId() {
+        return this.messageId;
+    }
 
-  @SerializedName("createdTime")
-  private String createdTime;
+    public String getCreatedTime() {
+        return this.createdTime;
+    }
 
-  @SerializedName("mediaType")
-  private int mediaType;
+    public int getMediaType() {
+        return this.mediaType;
+    }
 
-  @SerializedName("type")
-  private int type;
+    public int getType() {
+        return this.type;
+    }
 
-  @SerializedName("content")
-  private String content;
+    public String getContent() {
+        return this.content;
+    }
 
-  @SerializedName("isHidden")
-  private boolean isHidden;
-
-  public String getUid() {
-    return uid;
-  }
-
-  public Object getMediaValue() {
-    return mediaValue;
-  }
-
-  public String getMessageId() {
-    return messageId;
-  }
-
-  public String getCreatedTime() {
-    return createdTime;
-  }
-
-  public int getMediaType() {
-    return mediaType;
-  }
-
-  public int getType() {
-    return type;
-  }
-
-  public String getContent() {
-    return content;
-  }
-
-  public boolean isIsHidden() {
-    return isHidden;
-  }
+    public boolean isIsHidden() {
+        return this.isHidden;
+    }
 }
+

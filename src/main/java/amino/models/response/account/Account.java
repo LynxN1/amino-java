@@ -1,174 +1,153 @@
 package amino.models.response.account;
 
+import amino.models.response.account.AdvancedSettings;
+import amino.models.response.account.Extensions;
 import com.google.gson.annotations.SerializedName;
 
 public class Account {
+    @SerializedName(value="googleID")
+    private Object googleID;
+    @SerializedName(value="modifiedTime")
+    private String modifiedTime;
+    @SerializedName(value="role")
+    private int role;
+    @SerializedName(value="aminoIdEditable")
+    private boolean aminoIdEditable;
+    @SerializedName(value="facebookID")
+    private Object facebookID;
+    @SerializedName(value="icon")
+    private String icon;
+    @SerializedName(value="emailActivation")
+    private int emailActivation;
+    @SerializedName(value="membership")
+    private Object membership;
+    @SerializedName(value="appleID")
+    private Object appleID;
+    @SerializedName(value="twitterID")
+    private Object twitterID;
+    @SerializedName(value="aminoId")
+    private String aminoId;
+    @SerializedName(value="securityLevel")
+    private int securityLevel;
+    @SerializedName(value="uid")
+    private String uid;
+    @SerializedName(value="extensions")
+    private Extensions extensions;
+    @SerializedName(value="mediaList")
+    private Object mediaList;
+    @SerializedName(value="phoneNumber")
+    private String phoneNumber;
+    @SerializedName(value="phoneNumberActivation")
+    private int phoneNumberActivation;
+    @SerializedName(value="advancedSettings")
+    private AdvancedSettings advancedSettings;
+    @SerializedName(value="nickname")
+    private String nickname;
+    @SerializedName(value="createdTime")
+    private String createdTime;
+    @SerializedName(value="activation")
+    private int activation;
+    @SerializedName(value="email")
+    private String email;
+    @SerializedName(value="username")
+    private Object username;
+    @SerializedName(value="status")
+    private int status;
 
-  @SerializedName("googleID")
-  private Object googleID;
+    public Object getGoogleID() {
+        return this.googleID;
+    }
 
-  @SerializedName("modifiedTime")
-  private String modifiedTime;
+    public String getModifiedTime() {
+        return this.modifiedTime;
+    }
 
-  @SerializedName("role")
-  private int role;
+    public int getRole() {
+        return this.role;
+    }
 
-  @SerializedName("aminoIdEditable")
-  private boolean aminoIdEditable;
+    public boolean isAminoIdEditable() {
+        return this.aminoIdEditable;
+    }
 
-  @SerializedName("facebookID")
-  private Object facebookID;
+    public Object getFacebookID() {
+        return this.facebookID;
+    }
 
-  @SerializedName("icon")
-  private String icon;
+    public String getIcon() {
+        return this.icon;
+    }
 
-  @SerializedName("emailActivation")
-  private int emailActivation;
+    public int getEmailActivation() {
+        return this.emailActivation;
+    }
 
-  @SerializedName("membership")
-  private Object membership;
+    public Object getMembership() {
+        return this.membership;
+    }
 
-  @SerializedName("appleID")
-  private Object appleID;
+    public Object getAppleID() {
+        return this.appleID;
+    }
 
-  @SerializedName("twitterID")
-  private Object twitterID;
+    public Object getTwitterID() {
+        return this.twitterID;
+    }
 
-  @SerializedName("aminoId")
-  private String aminoId;
+    public String getAminoId() {
+        return this.aminoId;
+    }
 
-  @SerializedName("securityLevel")
-  private int securityLevel;
+    public int getSecurityLevel() {
+        return this.securityLevel;
+    }
 
-  @SerializedName("uid")
-  private String uid;
+    public String getUid() {
+        return this.uid;
+    }
 
-  @SerializedName("extensions")
-  private Extensions extensions;
+    public Extensions getExtensions() {
+        return this.extensions;
+    }
 
-  @SerializedName("mediaList")
-  private Object mediaList;
+    public Object getMediaList() {
+        return this.mediaList;
+    }
 
-  @SerializedName("phoneNumber")
-  private String phoneNumber;
+    public String getPhoneNumber() {
+        return this.phoneNumber;
+    }
 
-  @SerializedName("phoneNumberActivation")
-  private int phoneNumberActivation;
+    public int getPhoneNumberActivation() {
+        return this.phoneNumberActivation;
+    }
 
-  @SerializedName("advancedSettings")
-  private AdvancedSettings advancedSettings;
+    public AdvancedSettings getAdvancedSettings() {
+        return this.advancedSettings;
+    }
 
-  @SerializedName("nickname")
-  private String nickname;
+    public String getNickname() {
+        return this.nickname;
+    }
 
-  @SerializedName("createdTime")
-  private String createdTime;
+    public String getCreatedTime() {
+        return this.createdTime;
+    }
 
-  @SerializedName("activation")
-  private int activation;
+    public int getActivation() {
+        return this.activation;
+    }
 
-  @SerializedName("email")
-  private String email;
+    public String getEmail() {
+        return this.email;
+    }
 
-  @SerializedName("username")
-  private Object username;
+    public Object getUsername() {
+        return this.username;
+    }
 
-  @SerializedName("status")
-  private int status;
-
-  public Object getGoogleID() {
-    return googleID;
-  }
-
-  public String getModifiedTime() {
-    return modifiedTime;
-  }
-
-  public int getRole() {
-    return role;
-  }
-
-  public boolean isAminoIdEditable() {
-    return aminoIdEditable;
-  }
-
-  public Object getFacebookID() {
-    return facebookID;
-  }
-
-  public String getIcon() {
-    return icon;
-  }
-
-  public int getEmailActivation() {
-    return emailActivation;
-  }
-
-  public Object getMembership() {
-    return membership;
-  }
-
-  public Object getAppleID() {
-    return appleID;
-  }
-
-  public Object getTwitterID() {
-    return twitterID;
-  }
-
-  public String getAminoId() {
-    return aminoId;
-  }
-
-  public int getSecurityLevel() {
-    return securityLevel;
-  }
-
-  public String getUid() {
-    return uid;
-  }
-
-  public Extensions getExtensions() {
-    return extensions;
-  }
-
-  public Object getMediaList() {
-    return mediaList;
-  }
-
-  public String getPhoneNumber() {
-    return phoneNumber;
-  }
-
-  public int getPhoneNumberActivation() {
-    return phoneNumberActivation;
-  }
-
-  public AdvancedSettings getAdvancedSettings() {
-    return advancedSettings;
-  }
-
-  public String getNickname() {
-    return nickname;
-  }
-
-  public String getCreatedTime() {
-    return createdTime;
-  }
-
-  public int getActivation() {
-    return activation;
-  }
-
-  public String getEmail() {
-    return email;
-  }
-
-  public Object getUsername() {
-    return username;
-  }
-
-  public int getStatus() {
-    return status;
-  }
+    public int getStatus() {
+        return this.status;
+    }
 }
+

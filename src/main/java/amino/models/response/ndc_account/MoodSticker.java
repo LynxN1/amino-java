@@ -3,95 +3,83 @@ package amino.models.response.ndc_account;
 import com.google.gson.annotations.SerializedName;
 
 public class MoodSticker {
+    @SerializedName(value="iconV2")
+    private String iconV2;
+    @SerializedName(value="stickerCollectionId")
+    private Object stickerCollectionId;
+    @SerializedName(value="mediumIconV2")
+    private Object mediumIconV2;
+    @SerializedName(value="icon")
+    private String icon;
+    @SerializedName(value="stickerId")
+    private String stickerId;
+    @SerializedName(value="extensions")
+    private Object extensions;
+    @SerializedName(value="smallIconV2")
+    private Object smallIconV2;
+    @SerializedName(value="name")
+    private Object name;
+    @SerializedName(value="createdTime")
+    private Object createdTime;
+    @SerializedName(value="smallIcon")
+    private Object smallIcon;
+    @SerializedName(value="mediumIcon")
+    private Object mediumIcon;
+    @SerializedName(value="usedCount")
+    private int usedCount;
+    @SerializedName(value="status")
+    private int status;
 
-  @SerializedName("iconV2")
-  private String iconV2;
+    public String getIconV2() {
+        return this.iconV2;
+    }
 
-  @SerializedName("stickerCollectionId")
-  private Object stickerCollectionId;
+    public Object getStickerCollectionId() {
+        return this.stickerCollectionId;
+    }
 
-  @SerializedName("mediumIconV2")
-  private Object mediumIconV2;
+    public Object getMediumIconV2() {
+        return this.mediumIconV2;
+    }
 
-  @SerializedName("icon")
-  private String icon;
+    public String getIcon() {
+        return this.icon;
+    }
 
-  @SerializedName("stickerId")
-  private String stickerId;
+    public String getStickerId() {
+        return this.stickerId;
+    }
 
-  @SerializedName("extensions")
-  private Object extensions;
+    public Object getExtensions() {
+        return this.extensions;
+    }
 
-  @SerializedName("smallIconV2")
-  private Object smallIconV2;
+    public Object getSmallIconV2() {
+        return this.smallIconV2;
+    }
 
-  @SerializedName("name")
-  private Object name;
+    public Object getName() {
+        return this.name;
+    }
 
-  @SerializedName("createdTime")
-  private Object createdTime;
+    public Object getCreatedTime() {
+        return this.createdTime;
+    }
 
-  @SerializedName("smallIcon")
-  private Object smallIcon;
+    public Object getSmallIcon() {
+        return this.smallIcon;
+    }
 
-  @SerializedName("mediumIcon")
-  private Object mediumIcon;
+    public Object getMediumIcon() {
+        return this.mediumIcon;
+    }
 
-  @SerializedName("usedCount")
-  private int usedCount;
+    public int getUsedCount() {
+        return this.usedCount;
+    }
 
-  @SerializedName("status")
-  private int status;
-
-  public String getIconV2() {
-    return iconV2;
-  }
-
-  public Object getStickerCollectionId() {
-    return stickerCollectionId;
-  }
-
-  public Object getMediumIconV2() {
-    return mediumIconV2;
-  }
-
-  public String getIcon() {
-    return icon;
-  }
-
-  public String getStickerId() {
-    return stickerId;
-  }
-
-  public Object getExtensions() {
-    return extensions;
-  }
-
-  public Object getSmallIconV2() {
-    return smallIconV2;
-  }
-
-  public Object getName() {
-    return name;
-  }
-
-  public Object getCreatedTime() {
-    return createdTime;
-  }
-
-  public Object getSmallIcon() {
-    return smallIcon;
-  }
-
-  public Object getMediumIcon() {
-    return mediumIcon;
-  }
-
-  public int getUsedCount() {
-    return usedCount;
-  }
-
-  public int getStatus() {
-    return status;
-  }
+    public int getStatus() {
+        return this.status;
+    }
 }
+

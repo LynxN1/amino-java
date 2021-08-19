@@ -3,18 +3,17 @@ package amino.models.response.account;
 import com.google.gson.annotations.SerializedName;
 
 public class VisitSettings {
+    @SerializedName(value="notificationStatus")
+    private int notificationStatus;
+    @SerializedName(value="privacyMode")
+    private int privacyMode;
 
-  @SerializedName("notificationStatus")
-  private int notificationStatus;
+    public int getNotificationStatus() {
+        return this.notificationStatus;
+    }
 
-  @SerializedName("privacyMode")
-  private int privacyMode;
-
-  public int getNotificationStatus() {
-    return notificationStatus;
-  }
-
-  public int getPrivacyMode() {
-    return privacyMode;
-  }
+    public int getPrivacyMode() {
+        return this.privacyMode;
+    }
 }
+

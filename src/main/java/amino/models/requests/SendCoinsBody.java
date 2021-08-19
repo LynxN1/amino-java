@@ -1,5 +1,6 @@
 package amino.models.requests;
 
+import amino.models.requests.TippingContext;
 import amino.utils.TimeUtils;
 
 public class SendCoinsBody {
@@ -12,3 +13,4 @@ public class SendCoinsBody {
         return this;
     }
 }
+

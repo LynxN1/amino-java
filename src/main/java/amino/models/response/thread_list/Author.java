@@ -3,116 +3,101 @@ package amino.models.response.thread_list;
 import com.google.gson.annotations.SerializedName;
 
 public class Author {
+    @SerializedName(value="followingStatus")
+    private int followingStatus;
+    @SerializedName(value="membersCount")
+    private int membersCount;
+    @SerializedName(value="role")
+    private int role;
+    @SerializedName(value="level")
+    private int level;
+    @SerializedName(value="icon")
+    private String icon;
+    @SerializedName(value="reputation")
+    private int reputation;
+    @SerializedName(value="membershipStatus")
+    private int membershipStatus;
+    @SerializedName(value="uid")
+    private String uid;
+    @SerializedName(value="accountMembershipStatus")
+    private int accountMembershipStatus;
+    @SerializedName(value="ndcId")
+    private int ndcId;
+    @SerializedName(value="isGlobal")
+    private boolean isGlobal;
+    @SerializedName(value="avatarFrame")
+    private AvatarFrame avatarFrame;
+    @SerializedName(value="nickname")
+    private String nickname;
+    @SerializedName(value="isNicknameVerified")
+    private boolean isNicknameVerified;
+    @SerializedName(value="avatarFrameId")
+    private String avatarFrameId;
+    @SerializedName(value="status")
+    private int status;
 
-  @SerializedName("followingStatus")
-  private int followingStatus;
+    public int getFollowingStatus() {
+        return this.followingStatus;
+    }
 
-  @SerializedName("membersCount")
-  private int membersCount;
+    public int getMembersCount() {
+        return this.membersCount;
+    }
 
-  @SerializedName("role")
-  private int role;
+    public int getRole() {
+        return this.role;
+    }
 
-  @SerializedName("level")
-  private int level;
+    public int getLevel() {
+        return this.level;
+    }
 
-  @SerializedName("icon")
-  private String icon;
+    public String getIcon() {
+        return this.icon;
+    }
 
-  @SerializedName("reputation")
-  private int reputation;
+    public int getReputation() {
+        return this.reputation;
+    }
 
-  @SerializedName("membershipStatus")
-  private int membershipStatus;
+    public int getMembershipStatus() {
+        return this.membershipStatus;
+    }
 
-  @SerializedName("uid")
-  private String uid;
+    public String getUid() {
+        return this.uid;
+    }
 
-  @SerializedName("accountMembershipStatus")
-  private int accountMembershipStatus;
+    public int getAccountMembershipStatus() {
+        return this.accountMembershipStatus;
+    }
 
-  @SerializedName("ndcId")
-  private int ndcId;
+    public int getNdcId() {
+        return this.ndcId;
+    }
 
-  @SerializedName("isGlobal")
-  private boolean isGlobal;
+    public boolean isIsGlobal() {
+        return this.isGlobal;
+    }
 
-  @SerializedName("avatarFrame")
-  private AvatarFrame avatarFrame;
+    public AvatarFrame getAvatarFrame() {
+        return this.avatarFrame;
+    }
 
-  @SerializedName("nickname")
-  private String nickname;
+    public String getNickname() {
+        return this.nickname;
+    }
 
-  @SerializedName("isNicknameVerified")
-  private boolean isNicknameVerified;
+    public boolean isIsNicknameVerified() {
+        return this.isNicknameVerified;
+    }
 
-  @SerializedName("avatarFrameId")
-  private String avatarFrameId;
+    public String getAvatarFrameId() {
+        return this.avatarFrameId;
+    }
 
-  @SerializedName("status")
-  private int status;
-
-  public int getFollowingStatus() {
-    return followingStatus;
-  }
-
-  public int getMembersCount() {
-    return membersCount;
-  }
-
-  public int getRole() {
-    return role;
-  }
-
-  public int getLevel() {
-    return level;
-  }
-
-  public String getIcon() {
-    return icon;
-  }
-
-  public int getReputation() {
-    return reputation;
-  }
-
-  public int getMembershipStatus() {
-    return membershipStatus;
-  }
-
-  public String getUid() {
-    return uid;
-  }
-
-  public int getAccountMembershipStatus() {
-    return accountMembershipStatus;
-  }
-
-  public int getNdcId() {
-    return ndcId;
-  }
-
-  public boolean isIsGlobal() {
-    return isGlobal;
-  }
-
-  public AvatarFrame getAvatarFrame() {
-    return avatarFrame;
-  }
-
-  public String getNickname() {
-    return nickname;
-  }
-
-  public boolean isIsNicknameVerified() {
-    return isNicknameVerified;
-  }
-
-  public String getAvatarFrameId() {
-    return avatarFrameId;
-  }
-
-  public int getStatus() {
-    return status;
-  }
+    public int getStatus() {
+        return this.status;
+    }
 }
+

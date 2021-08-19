@@ -4,18 +4,17 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class LaunchPage {
+    @SerializedName(value="mediaList")
+    private List<Object> mediaList;
+    @SerializedName(value="title")
+    private String title;
 
-  @SerializedName("mediaList")
-  private List<Object> mediaList;
+    public List<Object> getMediaList() {
+        return this.mediaList;
+    }
 
-  @SerializedName("title")
-  private String title;
-
-  public List<Object> getMediaList() {
-    return mediaList;
-  }
-
-  public String getTitle() {
-    return title;
-  }
+    public String getTitle() {
+        return this.title;
+    }
 }
+
