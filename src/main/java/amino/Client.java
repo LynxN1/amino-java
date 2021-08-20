@@ -95,8 +95,10 @@ public class Client {
     okhttp3.Call call = okClient.newCall(request);
     okhttp3.Response response = call.execute();
     if (!response.isSuccessful()) {
+      response.close();
       throw new Exception("Watch ad exception");
     }
+    response.close();
   }
 
   public CommunitiesData getSubClients(int start, int size) throws Exception {
