@@ -36,17 +36,33 @@ public class Client {
   }
 
   public void login(String email, String password) throws Exception {
-    LoginBody body = new LoginBody().email(email).v(2).secret(password).deviceId(headers.deviceId).clientType(100).action("normal");
-    Call<AccountData> res = retrofit.auth(headers.getHeaders(), body);
+    LoginBody body = new LoginBody().email(email).v(2).secret(password).deviceId(headers.DEVICEID).clientType(100).action("normal");
+    System.out.println(gson.toJson(body));
+    String sig = getSignature(gson.toJson(body));
+    Call<AccountData> res = retrofit.auth(headers.getHeaders(sig), body);
     Response<AccountData> accountDataResponse = res.execute();
-    if (accountDataResponse.isSuccessful()) {
-      AccountData accountData = accountDataResponse.body();
-      headers.SID = Objects.requireNonNull(accountData).getSid();
-      headers.AUID = accountData.getAuid();
-      account = accountData;
-    } else {
+    if (!accountDataResponse.isSuccessful()) {
       new Exceptions(Objects.requireNonNull(accountDataResponse.errorBody()).charStream()).checkException();
     }
+    AccountData accountData = accountDataResponse.body();
+    headers.SID = Objects.requireNonNull(accountData).getSid();
+    headers.AUID = accountData.getAuid();
+    account = accountData;
+  }
+
+  public String getSignature(String json) throws Exception {
+    RequestBody body = RequestBody.create(MediaType.parse("application/json"), json);
+    Request request = new Request.Builder()
+            .url("https://aminocoins.ru:8088/api/narvii/signature")
+            .header("apikey", "id")
+            .post(body)
+            .build();
+    okhttp3.Call call = okClient.newCall(request);
+    okhttp3.Response response = call.execute();
+    if (!response.isSuccessful()) {
+      throw new Exception("getSignature request exception");
+    }
+    return Objects.requireNonNull(response.body()).string();
   }
 
   public void loginAminoapps(String email, String password) throws Exception {
@@ -68,7 +84,7 @@ public class Client {
             .build();
     okhttp3.Call call = okClient.newCall(request);
     okhttp3.Response response = call.execute();
-    String resBody = response.body().string();
+    String resBody = Objects.requireNonNull(response.body()).string();
     try {
       LoginResponse loginResponse = gson.fromJson(resBody, LoginResponse.class);
       if (loginResponse.getResult().getUid() != null) {
