@@ -2,6 +2,7 @@ package amino;
 
 import amino.exceptions.Exceptions;
 import amino.exceptions.InvalidPassword;
+import amino.models.requests.LoginAminoappsBody;
 import amino.models.requests.LoginBody;
 import amino.models.response.account.AccountData;
 import amino.models.response.aminoapps.LoginResponse;
@@ -45,15 +46,12 @@ public class Client {
   }
 
   public void loginAminoapps(String email, String password) throws Exception {
-    String json = "{\n" +
-            "\"auth_type\": 0,\n" +
-            "\"email\": \"" + email + "\",\n" +
-            "\"recaptcha_challenge\": \"03AGdBq24RkJRzNVql43ZETbuzHfaUG0VVqx4U9uRqwaCHYbyGDG-KlxP7GAdUKM-A9ajDP_ZkB9PlVL8lJ312U9vkk0lI9J92JwLR6obxq-A5NTeABdzUaWfJY5aGcLPKX31q3O8rAvd7QPOBybvjhmgHZQlZ3Z1gf1tJpyCP3rrTEsTjsM6f_h68_IYh7MLuf3ut9fkMoQiJLyaAV9ZGT5I_5dhAfxSFyFAsrv0tGpre2m8AFakm4k5SYO_W_6c2Nrl84fZdsqnrdjoHdGAOPbP73ZR1afPrqQo_e01nRJb7sIstx4Y3wBsSm2B8Yf3s4HsVrBkyXj0UTY1NlCdnzGIIKAp92xjp6RZlausFk_MDD1t9DJhGGzYaNMyVoCNTMvFULs9sQZsUs7D25slbOjBlwNx5Rj8kIbNu-BHL498wj8-wRGb3MB33Q8IEAaAmk9EVjksDcWzi\",\n" +
-            "\"recaptcha_version\": \"v3\",\n" +
-            "\"secret\": \"" + password + "\"\n" +
-            "}";
+    var jsonModel = new LoginAminoappsBody();
+    jsonModel.setEmail(email);
+    jsonModel.setSecret(password);
+    jsonModel.setRecaptchaChallenge("03AGdBq24RkJRzNVql43ZETbuzHfaUG0VVqx4U9uRqwaCHYbyGDG-KlxP7GAdUKM-A9ajDP_ZkB9PlVL8lJ312U9vkk0lI9J92JwLR6obxq-A5NTeABdzUaWfJY5aGcLPKX31q3O8rAvd7QPOBybvjhmgHZQlZ3Z1gf1tJpyCP3rrTEsTjsM6f_h68_IYh7MLuf3ut9fkMoQiJLyaAV9ZGT5I_5dhAfxSFyFAsrv0tGpre2m8AFakm4k5SYO_W_6c2Nrl84fZdsqnrdjoHdGAOPbP73ZR1afPrqQo_e01nRJb7sIstx4Y3wBsSm2B8Yf3s4HsVrBkyXj0UTY1NlCdnzGIIKAp92xjp6RZlausFk_MDD1t9DJhGGzYaNMyVoCNTMvFULs9sQZsUs7D25slbOjBlwNx5Rj8kIbNu-BHL498wj8-wRGb3MB33Q8IEAaAmk9EVjksDcWzi");
     RequestBody body = RequestBody.create(
-            MediaType.parse("application/json"), json);
+            MediaType.parse("application/json"), gson.toJson(jsonModel));
     Request request = new Request.Builder()
             .url("https://aminoapps.com/api/auth")
             .header("Content-Type", "application/json")
