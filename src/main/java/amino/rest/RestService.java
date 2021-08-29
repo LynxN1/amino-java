@@ -1,11 +1,6 @@
 package amino.rest;
 
-import amino.models.requests.CheckInBody;
-import amino.models.requests.LoginBody;
-import amino.models.requests.PlayLotteryBody;
-import amino.models.requests.SendCoinsBody;
-import amino.models.requests.SendMessageBody;
-import amino.models.requests.StartChatBody;
+import amino.models.requests.*;
 import amino.models.response.account.AccountData;
 import amino.models.response.link_info.LinkInfoResponse;
 import amino.models.response.message_list.MessageListResponse;

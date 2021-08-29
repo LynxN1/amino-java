@@ -34,6 +34,7 @@ public class Headers {
     headers_map.put("NDCDEVICEID", DEVICEID);
     headers_map.put("Accept-Language", "en-US");
     headers_map.put("Content-Type", "application/json; charset=utf-8");
+    headers_map.put("User-Agent", "Dalvik/2.1.0 (Linux; U; Android 5.1.1; SM-N976N Build/d2que-user 5.1.1 QP1; com.narvii.amino.master/3.4.33581)");
     headers_map.put("Host", "service.narvii.com");
 
     if (SID != null) {

@@ -30,7 +30,10 @@ public class Client {
 
 
   public void login(String email, String password) throws Exception {
-    LoginBody body = new LoginBody().email(email).v(2).secret(password).deviceId(headers.DEVICEID).clientType(100).action("normal");
+    var body = new LoginBody();
+    body.setEmail(email);
+    body.setDeviceID(headers.DEVICEID);
+    body.setSecret(password);
     Call<AccountData> res = retrofit.auth(headers.getHeaders(gson.toJson(body)), body);
     Response<AccountData> accountDataResponse = res.execute();
     if (!accountDataResponse.isSuccessful()) {

@@ -10,6 +10,7 @@ import com.google.gson.JsonObject;
 import retrofit2.Call;
 import retrofit2.Response;
 
+import java.util.List;
 import java.util.Objects;
 
 public class SubClient {
@@ -46,7 +47,9 @@ public class SubClient {
     }
 
     public void sendMessage(String message, String chatId) throws Exception {
-        SendMessageBody body = new SendMessageBody().type(0).content(message);
+        var body = new SendMessageBody();
+        body.setContent(message);
+        body.setType(0);
         Call<JsonObject> res = client.retrofit.sendMessage(client.headers.getHeaders(client.gson.toJson(body)), comId, chatId, body);
         Response<JsonObject> jsonObjectResponse = res.execute();
         if (!jsonObjectResponse.isSuccessful()) {
@@ -54,8 +57,26 @@ public class SubClient {
         }
     }
 
-    public MessageListResponse startChat(String userId) throws Exception {
-        StartChatBody body = new StartChatBody().inviteeUids(userId);
+    public void sendMessage(String message, String chatId, Integer type, Extensions mentions) throws Exception {
+        var body = new SendMessageBody();
+        body.setContent(message);
+        body.setType(type);
+        body.setExtensions(mentions);
+        Call<JsonObject> res = client.retrofit.sendMessage(client.headers.getHeaders(), comId, chatId, body);
+        Response<JsonObject> jsonObjectResponse = res.execute();
+        if (!jsonObjectResponse.isSuccessful()) {
+            new Exceptions(Objects.requireNonNull(jsonObjectResponse.errorBody()).charStream()).checkException();
+        }
+    }
+
+    public MessageListResponse startChat(List<String> userId, String message, String title, String content) throws Exception {
+        var body = new StartChatBody();
+        body.setInviteeUids(userId);
+        body.setType(0);
+        body.setPublishToGlobal(0);
+        body.setInitialMessageContent(message);
+        body.setTitle(title);
+        body.setContent(content);
         Call<MessageListResponse> res = client.retrofit.startChat(client.headers.getHeaders(client.gson.toJson(body)), comId, body);
         Response<MessageListResponse> messageListResponse = res.execute();
         if (messageListResponse.isSuccessful()) {
@@ -75,14 +96,6 @@ public class SubClient {
         return null;
     }
 
-    public void sendMessage(String message, String chatId, Integer type) throws Exception {
-        Call<JsonObject> res = client.retrofit.sendMessage(client.headers.getHeaders(), comId, chatId, new SendMessageBody().type(type).content(message));
-        Response<JsonObject> jsonObjectResponse = res.execute();
-        if (!jsonObjectResponse.isSuccessful()) {
-            new Exceptions(Objects.requireNonNull(jsonObjectResponse.errorBody()).charStream()).checkException();
-        }
-    }
-
     public void checkIn() throws Exception {
         Call<JsonObject> res = client.retrofit.checkIn(client.headers.getHeaders(), comId, new CheckInBody());
         Response<JsonObject> jsonObjectResponse = res.execute();
@@ -100,7 +113,9 @@ public class SubClient {
     }
 
     public void sendCoins(Integer coins, String blogId) throws Exception {
-        Call<JsonObject> res = client.retrofit.sendCoins(client.headers.getHeaders(), comId, blogId, new SendCoinsBody().coins(coins));
+        var body = new SendCoinsBody();
+        body.setCoins(coins);
+        Call<JsonObject> res = client.retrofit.sendCoins(client.headers.getHeaders(client.gson.toJson(body)), comId, blogId, body);
         Response<JsonObject> jsonObjectResponse = res.execute();
         if (!jsonObjectResponse.isSuccessful()) {
             new Exceptions(Objects.requireNonNull(jsonObjectResponse.errorBody()).charStream()).checkException();
