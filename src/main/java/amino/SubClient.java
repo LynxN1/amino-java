@@ -47,7 +47,7 @@ public class SubClient {
 
     public void sendMessage(String message, String chatId) throws Exception {
         SendMessageBody body = new SendMessageBody().type(0).content(message);
-        Call<JsonObject> res = client.retrofit.sendMessage(client.headers.getHeaders(), comId, chatId, body);
+        Call<JsonObject> res = client.retrofit.sendMessage(client.headers.getHeaders(client.gson.toJson(body)), comId, chatId, body);
         Response<JsonObject> jsonObjectResponse = res.execute();
         if (!jsonObjectResponse.isSuccessful()) {
             new Exceptions(Objects.requireNonNull(jsonObjectResponse.errorBody()).charStream()).checkException();
@@ -56,7 +56,7 @@ public class SubClient {
 
     public MessageListResponse startChat(String userId) throws Exception {
         StartChatBody body = new StartChatBody().inviteeUids(userId);
-        Call<MessageListResponse> res = client.retrofit.startChat(client.headers.getHeaders(), comId, body);
+        Call<MessageListResponse> res = client.retrofit.startChat(client.headers.getHeaders(client.gson.toJson(body)), comId, body);
         Response<MessageListResponse> messageListResponse = res.execute();
         if (messageListResponse.isSuccessful()) {
             return messageListResponse.body();
@@ -66,7 +66,7 @@ public class SubClient {
     }
 
     public UserProfileListResponse getOnlineUsers(Integer start, Integer size) throws Exception {
-        Call<UserProfileListResponse> res = client.retrofit.getOnlineUsers(client.headers.getHeaders(), comId, start, size);
+        Call<UserProfileListResponse> res = client.retrofit.getOnlineUsers(client.headers.getHeaders(), comId, "ndtopic:x" + getComId() + ":online-members", start, size);
         Response<UserProfileListResponse> userProfileListResponse = res.execute();
         if (userProfileListResponse.isSuccessful()) {
             return userProfileListResponse.body();

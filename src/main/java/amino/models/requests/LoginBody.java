@@ -9,7 +9,7 @@ public class LoginBody {
     private String deviceID;
     private int clientType;
     private String action;
-    private Integer timestamp = TimeUtils.unixInstant();
+    private Long timestamp = TimeUtils.unixInstant();
 
     public LoginBody email(String email) {
         this.email = email;

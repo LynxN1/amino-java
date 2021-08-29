@@ -6,8 +6,8 @@ public class SendMessageBody {
     private Integer type;
     private String content;
     private AttachedObject attachedObject;
-    private Integer timestamp = TimeUtils.unixInstant();
-    private Integer clientRefId = TimeUtils.unixInstant();
+    private Long timestamp = TimeUtils.unixInstant();
+    private Long clientRefId = TimeUtils.unixInstant();
 
     public SendMessageBody type(Integer type) {
         this.type = type;

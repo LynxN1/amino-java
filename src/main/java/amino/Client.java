@@ -7,62 +7,38 @@ import amino.models.response.account.AccountData;
 import amino.models.response.aminoapps.LoginResponse;
 import amino.models.response.link_info.LinkInfoResponse;
 import amino.models.response.sub_clients.CommunitiesData;
+import amino.rest.OkClient;
 import amino.rest.RestService;
+import amino.rest.RetrofitClient;
 import amino.utils.Headers;
 import com.google.gson.Gson;
 import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 import javax.security.auth.login.LoginException;
 import java.util.Objects;
 import java.util.UUID;
 
 public class Client {
-  public RestService retrofit = Client.getRetrofit();
+  public RestService retrofit = RetrofitClient.getRetrofit();
   public AccountData account;
   public Headers headers = new Headers();
-  private final OkHttpClient okClient = new OkHttpClient();
-  private final Gson gson = new Gson();
+  public final Gson gson = new Gson();
 
-  private static RestService getRetrofit() {
-    Retrofit retrofit = new Retrofit.Builder().baseUrl("https://service.narvii.com/api/v1/").addConverterFactory(GsonConverterFactory.create()).build();
-    return retrofit.create(RestService.class);
-  }
 
   public void login(String email, String password) throws Exception {
     LoginBody body = new LoginBody().email(email).v(2).secret(password).deviceId(headers.DEVICEID).clientType(100).action("normal");
-    System.out.println(gson.toJson(body));
-    String sig = getSignature(gson.toJson(body));
-    Call<AccountData> res = retrofit.auth(headers.getHeaders(sig), body);
+    Call<AccountData> res = retrofit.auth(headers.getHeaders(gson.toJson(body)), body);
     Response<AccountData> accountDataResponse = res.execute();
     if (!accountDataResponse.isSuccessful()) {
       new Exceptions(Objects.requireNonNull(accountDataResponse.errorBody()).charStream()).checkException();
     }
     AccountData accountData = accountDataResponse.body();
     headers.SID = Objects.requireNonNull(accountData).getSid();
-    headers.AUID = accountData.getAuid();
     account = accountData;
-  }
-
-  public String getSignature(String json) throws Exception {
-    RequestBody body = RequestBody.create(MediaType.parse("application/json"), json);
-    Request request = new Request.Builder()
-            .url("https://aminocoins.ru:8088/api/narvii/signature")
-            .header("apikey", "id")
-            .post(body)
-            .build();
-    okhttp3.Call call = okClient.newCall(request);
-    okhttp3.Response response = call.execute();
-    if (!response.isSuccessful()) {
-      throw new Exception("getSignature request exception");
-    }
-    return Objects.requireNonNull(response.body()).string();
   }
 
   public void loginAminoapps(String email, String password) throws Exception {
@@ -82,8 +58,7 @@ public class Client {
             .header("User-Agent", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0")
             .post(body)
             .build();
-    okhttp3.Call call = okClient.newCall(request);
-    okhttp3.Response response = call.execute();
+    okhttp3.Response response = OkClient.getOkCall(request);
     String resBody = Objects.requireNonNull(response.body()).string();
     try {
       LoginResponse loginResponse = gson.fromJson(resBody, LoginResponse.class);
@@ -108,8 +83,7 @@ public class Client {
             .header("Authorization", "Basic NWJiNTM0OWUxYzlkNDQwMDA2NzUwNjgwOmM0ZDJmYmIxLTVlYjItNDM5MC05MDk3LTkxZjlmMjQ5NDI4OA==")
             .post(body)
             .build();
-    okhttp3.Call call = okClient.newCall(request);
-    okhttp3.Response response = call.execute();
+    okhttp3.Response response = OkClient.getOkCall(request);
     if (!response.isSuccessful()) {
       response.close();
       throw new Exception("Watch ad exception");

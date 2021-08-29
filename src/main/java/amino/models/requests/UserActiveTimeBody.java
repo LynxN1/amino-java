@@ -8,7 +8,7 @@ public class UserActiveTimeBody {
     private int timezone;
     private int optInAdsFlags;
     private List<UserActiveTimeChunkListItem> userActiveTimeChunkList;
-    private Integer timestamp = TimeUtils.unixInstant();
+    private Long timestamp = TimeUtils.unixInstant();
 
     public UserActiveTimeBody timezone(int timezone) {
         this.timezone = timezone;
