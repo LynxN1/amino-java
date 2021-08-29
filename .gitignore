@@ -2,4 +2,4 @@
 target/
 out/
 META-INF/
-scripts/
+/src/main/scripts/
