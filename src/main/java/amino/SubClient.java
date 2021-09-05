@@ -2,6 +2,7 @@ package amino;
 
 import amino.exceptions.Exceptions;
 import amino.models.requests.*;
+import amino.models.response.blog_list.BlogList;
 import amino.models.response.message_list.MessageListResponse;
 import amino.models.response.ndc_account.NdcAccount;
 import amino.models.response.thread_list.ThreadList;
@@ -29,21 +30,21 @@ public class SubClient {
     public NdcAccount getUserInfo(String userId) throws Exception {
         Call<NdcAccount> res = client.retrofit.getAccountData(client.headers.getHeaders(), comId, userId);
         Response<NdcAccount> ndcAccountResponse = res.execute();
-        if (ndcAccountResponse.isSuccessful()) {
+        if (!ndcAccountResponse.isSuccessful()) {
+            new Exceptions(Objects.requireNonNull(ndcAccountResponse.errorBody()).charStream()).checkException();
             return ndcAccountResponse.body();
         }
-        new Exceptions(Objects.requireNonNull(ndcAccountResponse.errorBody()).charStream()).checkException();
-        return null;
+        return ndcAccountResponse.body();
     }
 
     public ThreadList getChatThreads(String type, int start, int size) throws Exception {
         Call<ThreadList> res = client.retrofit.getChatThreads(client.headers.getHeaders(), comId, type, start, size);
         Response<ThreadList> threadListResponse = res.execute();
-        if (threadListResponse.isSuccessful()) {
+        if (!threadListResponse.isSuccessful()) {
+            new Exceptions(Objects.requireNonNull(threadListResponse.errorBody()).charStream()).checkException();
             return threadListResponse.body();
         }
-        new Exceptions(Objects.requireNonNull(threadListResponse.errorBody()).charStream()).checkException();
-        return null;
+        return threadListResponse.body();
     }
 
     public void sendMessage(String message, String chatId) throws Exception {
@@ -79,21 +80,19 @@ public class SubClient {
         body.setContent(content);
         Call<MessageListResponse> res = client.retrofit.startChat(client.headers.getHeaders(client.gson.toJson(body)), comId, body);
         Response<MessageListResponse> messageListResponse = res.execute();
-        if (messageListResponse.isSuccessful()) {
-            return messageListResponse.body();
+        if (!messageListResponse.isSuccessful()) {
+            new Exceptions(Objects.requireNonNull(messageListResponse.errorBody()).charStream()).checkException();
         }
-        new Exceptions(Objects.requireNonNull(messageListResponse.errorBody()).charStream()).checkException();
-        return null;
+        return messageListResponse.body();
     }
 
     public UserProfileListResponse getOnlineUsers(Integer start, Integer size) throws Exception {
         Call<UserProfileListResponse> res = client.retrofit.getOnlineUsers(client.headers.getHeaders(), comId, "ndtopic:x" + getComId() + ":online-members", start, size);
         Response<UserProfileListResponse> userProfileListResponse = res.execute();
-        if (userProfileListResponse.isSuccessful()) {
-            return userProfileListResponse.body();
+        if (!userProfileListResponse.isSuccessful()) {
+            new Exceptions(Objects.requireNonNull(userProfileListResponse.errorBody()).charStream()).checkException();
         }
-        new Exceptions(Objects.requireNonNull(userProfileListResponse.errorBody()).charStream()).checkException();
-        return null;
+        return userProfileListResponse.body();
     }
 
     public void checkIn() throws Exception {
@@ -137,5 +136,33 @@ public class SubClient {
             new Exceptions(Objects.requireNonNull(jsonObjectResponse.errorBody()).charStream()).checkException();
         }
     }
-}
 
+    public BlogList getUserBlogs(String userId, Integer start, Integer size) throws Exception {
+        Call<BlogList> res = client.retrofit.getUserBlogs(client.headers.getHeaders(), comId, "user", userId, start, size);
+        Response<BlogList> userBlogs = res.execute();
+        if (!userBlogs.isSuccessful()) {
+            new Exceptions(Objects.requireNonNull(userBlogs.errorBody()).charStream()).checkException();
+        }
+        return userBlogs.body();
+    }
+
+    public void subscribe(String userId) throws Exception {
+        var body = new SubscribeBody();
+        var paymentContext = new PaymentContext();
+        paymentContext.setIsAutoRenew(true);
+        body.setPaymentContext(paymentContext);
+        Call<JsonObject> res = client.retrofit.subscribe(client.headers.getHeaders(client.gson.toJson(body)), comId, userId, body);
+        Response<JsonObject> jsonObjectResponse = res.execute();
+        if (!jsonObjectResponse.isSuccessful()) {
+            new Exceptions(Objects.requireNonNull(jsonObjectResponse.errorBody()).charStream()).checkException();
+        }
+    }
+
+    public void inviteToChat(String userId, String chatId) throws Exception {
+        Call<JsonObject> res = client.retrofit.inviteToChat(client.headers.getHeaders(), comId, chatId, userId);
+        Response<JsonObject> jsonObjectResponse = res.execute();
+        if (!jsonObjectResponse.isSuccessful()) {
+            new Exceptions(Objects.requireNonNull(jsonObjectResponse.errorBody()).charStream()).checkException();
+        }
+    }
+}

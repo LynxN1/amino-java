@@ -1,6 +1,5 @@
 package amino.utils;
 
-import amino.Client;
 import amino.rest.OkClient;
 import okhttp3.MediaType;
 import okhttp3.Request;
