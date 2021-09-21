@@ -9,13 +9,16 @@ public class SendMessageBody{
 	private Extensions extensions;
 
 	@SerializedName("clientRefId")
-	private long clientRefId = TimeUtils.unixInstant();
+	private long clientRefId = TimeUtils.unixInstant() / 1000;
 
 	@SerializedName("type")
 	private int type;
 
 	@SerializedName("content")
 	private String content;
+
+	@SerializedName("attachedObject")
+	private final Object attachedObject = null;
 
 	@SerializedName("timestamp")
 	private long timestamp = TimeUtils.unixInstant();

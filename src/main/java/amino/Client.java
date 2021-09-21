@@ -5,6 +5,7 @@ import amino.exceptions.InvalidPassword;
 import amino.models.requests.*;
 import amino.models.response.account.AccountData;
 import amino.models.response.aminoapps.LoginResponse;
+import amino.models.response.event_log.EventLogResponse;
 import amino.models.response.link_info.LinkInfoResponse;
 import amino.models.response.sub_clients.CommunitiesData;
 import amino.models.response.wallet.WalletResponse;
@@ -35,7 +36,7 @@ public class Client {
     var body = new LoginBody();
     body.setEmail(email);
     body.setDeviceID(headers.DEVICEID);
-    body.setSecret(password);
+    body.setSecret("0 " + password);
     Call<AccountData> res = retrofit.auth(headers.getHeaders(gson.toJson(body)), body);
     Response<AccountData> accountDataResponse = res.execute();
     if (!accountDataResponse.isSuccessful()) {
@@ -90,6 +91,57 @@ public class Client {
       throw new Exception("Watch ad exception");
     }
     response.close();
+  }
+
+  public void registerCheck(String email, String deviceId) throws Exception {
+    var body = new RegisterCheckBody();
+    body.setEmail(email);
+    body.setDeviceId(deviceId);
+    Call<JsonObject> res = retrofit.registerCheck(headers.getHeaders(gson.toJson(body)), body);
+    Response<JsonObject> jsonObjectResponse = res.execute();
+    if (!jsonObjectResponse.isSuccessful()) {
+      new Exceptions(Objects.requireNonNull(jsonObjectResponse.errorBody()).charStream()).checkException();
+    }
+  }
+
+  public EventLogResponse getEventLog(String language) throws Exception {
+    Call<EventLogResponse> res = retrofit.eventLog(headers.getHeaders(), language);
+    Response<EventLogResponse> objectResponse = res.execute();
+    if (!objectResponse.isSuccessful()) {
+      new Exceptions(Objects.requireNonNull(objectResponse.errorBody()).charStream()).checkException();
+    }
+    return objectResponse.body();
+  }
+
+  public void requestValidationCode(String email, String deviceId) throws Exception {
+    var body = new RequestValidationCodeBody();
+    body.setEmail(email);
+    body.setDeviceId(deviceId);
+    Call<JsonObject> res = retrofit.requestValidationCode(headers.getHeaders(gson.toJson(body)), body);
+    Response<JsonObject> jsonObjectResponse = res.execute();
+    if (!jsonObjectResponse.isSuccessful()) {
+      new Exceptions(Objects.requireNonNull(jsonObjectResponse.errorBody()).charStream()).checkException();
+    }
+  }
+
+  public JsonObject register(String email, String password, String nickname, String code, String deviceId) throws Exception {
+    var body = new RegisterBody();
+    body.setEmail(email);
+    body.setPassword(password);
+    body.setDeviceId(deviceId);
+    body.setNickname(nickname);
+    var validationContext = new ValidationContext();
+    validationContext.setIdentity(email);
+    var data = new Data();
+    data.setCode(code);
+    validationContext.setData(data);
+    body.setValidationContext(validationContext);
+    Call<JsonObject> res = retrofit.register(headers.getHeaders(gson.toJson(body)), body);
+    Response<JsonObject> jsonObjectResponse = res.execute();
+    if (!jsonObjectResponse.isSuccessful()) {
+      new Exceptions(Objects.requireNonNull(jsonObjectResponse.errorBody()).charStream()).checkException();
+    }
+    return jsonObjectResponse.body();
   }
 
   public CommunitiesData getSubClients(int start, int size) throws Exception {

@@ -3,29 +3,51 @@ package amino.rest;
 import amino.models.requests.*;
 import amino.models.response.account.AccountData;
 import amino.models.response.blog_list.BlogList;
+import amino.models.response.bubble_list.BubbleListResponse;
+import amino.models.response.event_log.EventLogResponse;
 import amino.models.response.link_info.LinkInfoResponse;
 import amino.models.response.message_list.MessageListResponse;
 import amino.models.response.ndc_account.NdcAccount;
 import amino.models.response.sub_clients.CommunitiesData;
+import amino.models.response.template_list.TemplateResponse;
 import amino.models.response.thread_list.ThreadList;
 import amino.models.response.user_list.UserProfileListResponse;
 import amino.models.response.wallet.WalletResponse;
 import com.google.gson.JsonObject;
-import java.util.Map;
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.DELETE;
-import retrofit2.http.GET;
-import retrofit2.http.HeaderMap;
-import retrofit2.http.POST;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
+import retrofit2.http.*;
+
+import java.util.Map;
 
 public interface RestService {
   @POST("g/s/auth/login")
   Call<AccountData> auth(
           @HeaderMap Map<String, String> headers,
           @Body LoginBody body
+  );
+
+  @POST("g/s/auth/request-security-validation")
+  Call<JsonObject> requestValidationCode(
+          @HeaderMap Map<String, String> headers,
+          @Body RequestValidationCodeBody body
+  );
+
+  @POST("g/s/auth/register-check")
+  Call<JsonObject> registerCheck(
+          @HeaderMap Map<String, String> headers,
+          @Body RegisterCheckBody body
+  );
+
+  @GET("g/s/eventlog/profile")
+  Call<EventLogResponse> eventLog(
+          @HeaderMap Map<String, String> headers,
+          @Query("language") String language
+  );
+
+  @POST("g/s/auth/register")
+  Call<JsonObject> register(
+          @HeaderMap Map<String, String> headers,
+          @Body RegisterBody body
   );
 
   @GET("g/s/community/joined")
@@ -67,10 +89,22 @@ public interface RestService {
   );
 
   @GET("x{comId}/s/chat/thread")
+  // x{comId}/s/chat/thread?type=public-all&start={start}&size={size}
   Call<ThreadList> getChatThreads(
           @HeaderMap Map<String, String> headers,
           @Path("comId") String comId,
           @Query("type") String type,
+          @Query("start") int start,
+          @Query("size") int size
+  );
+
+  @GET("x{comId}/s/chat/thread")
+  // x{comId}/s/chat/thread?type=public-all&filterType={type}&start={start}&size={size}
+  Call<ThreadList> getChatThreads(
+          @HeaderMap Map<String, String> headers,
+          @Path("comId") String comId,
+          @Query("type") String type,
+          @Query("filterType") String filterType,
           @Query("start") int start,
           @Query("size") int size
   );
@@ -181,5 +215,55 @@ public interface RestService {
           @Path("comId") String comId,
           @Path("chatId") String chatId,
           @Path("userId") String userId
+  );
+
+  @GET("x{comId}/s/chat/thread/{chatId}/message")
+  Call<MessageListResponse> getChatMessages(
+          @HeaderMap Map<String, String> headers,
+          @Path("comId") String comId,
+          @Path("chatId") String chatId,
+          @Query("v") Integer v,
+          @Query("pagingType") String pagingType,
+          @Query("pageToken") String pageToken,
+          @Query("size") Integer size
+  );
+
+  @GET("x{comId}/s/chat/chat-bubble")
+  // x{comId}/s/chat/chat-bubble?type=all-my-bubbles&start={start}&size={size}
+  Call<BubbleListResponse> getBubbles(
+          @HeaderMap Map<String, String> headers,
+          @Path("comId") String comId,
+          @Query("type") String type,
+          @Query("start") Integer start,
+          @Query("size") Integer size
+  );
+
+  @POST("x{comId}/s/chat/chat-bubble/templates/{bubbleId}/generate")
+  Call<JsonObject> changeBubble(
+          @HeaderMap Map<String, String> headers,
+          @Path("comId") String comId,
+          @Path("bubbleId") String bubbleId,
+          @Body String body
+  );
+
+  @GET("x{comId}/s/chat/chat-bubble/templates")
+  Call<TemplateResponse> getTemplates(
+          @HeaderMap Map<String, String> headers,
+          @Path("comId") String comId
+  );
+
+  @DELETE("x{comId}/s/chat/thread/{chatId}/message/{messageId}")
+  Call<JsonObject> deleteMessage(
+          @HeaderMap Map<String, String> headers,
+          @Path("comId") String comId,
+          @Path("chatId") String chatId,
+          @Path("messageId") String messageId
+  );
+
+  @POST("x{comId}/s/community/stats/user-active-time")
+  Call<JsonObject> sendActiveObject(
+          @HeaderMap Map<String, String> headers,
+          @Path("comId") String comId,
+          @Body SendActiveBody body
   );
 }

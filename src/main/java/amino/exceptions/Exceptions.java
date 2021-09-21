@@ -33,8 +33,10 @@ public class Exceptions {
             case 218: {
                 throw new DeviceNotSupported(errorResponse.getApiMessage());
             }
+            case 230: {
+                throw new NotMemberOfCommunity(errorResponse.getApiMessage());
+            }
         }
         throw new Exception(errorResponse.getApiMessage());
     }
 }
-
