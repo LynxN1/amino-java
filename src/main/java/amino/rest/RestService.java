@@ -20,6 +20,13 @@ import retrofit2.http.*;
 import java.util.Map;
 
 public interface RestService {
+  @POST("{url}")
+  Call<JsonObject> customPostRequest(
+          @HeaderMap Map<String, String> headers,
+          @Path("url") String url,
+          @Body Object body
+  );
+
   @POST("g/s/auth/login")
   Call<AccountData> auth(
           @HeaderMap Map<String, String> headers,
@@ -96,6 +103,16 @@ public interface RestService {
           @Query("type") String type,
           @Query("start") int start,
           @Query("size") int size
+  );
+
+  @GET("x{comId}/s/user-profile")
+  // types: recent, banned, featured, leaders, curators
+  Call<UserProfileListResponse> getAllUsers(
+          @HeaderMap Map<String, String> headers,
+          @Path("comId") String comId,
+          @Query("type") String type,
+          @Query("start") Integer start,
+          @Query("size") Integer size
   );
 
   @GET("x{comId}/s/chat/thread")

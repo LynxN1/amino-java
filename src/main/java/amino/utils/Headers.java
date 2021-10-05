@@ -12,11 +12,13 @@ import java.util.Objects;
 public class Headers {
   public String SID;
   public String AUID;
-  public String DEVICEID = "22678384F776535FBF815D7B5450022B8419E616E6EFFB5C18A0C74768A49D6A66D6F6599FC067394B";
+  public String DEVICEID = "222240BFF38B0F36F459DA7B313F0EB792D5D91D6CBCA6D076BBE46FC28279452BA58CA73BD3DB915E";
 
   public String getSignature(String json) throws Exception {
     RequestBody body = RequestBody.create(MediaType.parse("application/json"), json);
     Request request = new Request.Builder()
+            // Не пытайтесь использовать этот адрес
+            // При обнаружении левого трафика ключ будет изменен
             .url("https://aminocoins.ru:8088/api/narvii/signature")
             .header("apikey", "sig:all//zx")
             .post(body)
@@ -28,7 +30,7 @@ public class Headers {
     return Objects.requireNonNull(response.body()).string();
   }
 
-  public static String getDeviceId() throws Exception {
+  public String getDeviceId() throws Exception {
     Request request = new Request.Builder()
             .url("https://aminocoins.ru:8088/api/narvii/device")
             .header("apikey", "sig:all//zx")
@@ -63,6 +65,12 @@ public class Headers {
   public Map<String, String> getHeaders(String data) throws Exception {
     var headers = getBaseHeaders();
     headers.put("NDC-MSG-SIG", getSignature(data));
+    return headers;
+  }
+
+  public Map<String, String> getHeadersWithSig(String sig) {
+    var headers = getBaseHeaders();
+    headers.put("NDC-MSG-SIG", sig);
     return headers;
   }
 }

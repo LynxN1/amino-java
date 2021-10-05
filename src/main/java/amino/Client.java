@@ -1,10 +1,8 @@
 package amino;
 
 import amino.exceptions.Exceptions;
-import amino.exceptions.InvalidPassword;
 import amino.models.requests.*;
 import amino.models.response.account.AccountData;
-import amino.models.response.aminoapps.LoginResponse;
 import amino.models.response.event_log.EventLogResponse;
 import amino.models.response.link_info.LinkInfoResponse;
 import amino.models.response.sub_clients.CommunitiesData;
@@ -18,10 +16,8 @@ import com.google.gson.JsonObject;
 import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.RequestBody;
-import retrofit2.Call;
 import retrofit2.Response;
 
-import javax.security.auth.login.LoginException;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -37,43 +33,43 @@ public class Client {
     body.setEmail(email);
     body.setDeviceID(headers.DEVICEID);
     body.setSecret("0 " + password);
-    Call<AccountData> res = retrofit.auth(headers.getHeaders(gson.toJson(body)), body);
-    Response<AccountData> accountDataResponse = res.execute();
-    if (!accountDataResponse.isSuccessful()) {
-      new Exceptions(Objects.requireNonNull(accountDataResponse.errorBody()).charStream()).checkException();
+    Response<AccountData> res = retrofit.auth(headers.getHeaders(gson.toJson(body)), body).execute();
+    if (!res.isSuccessful()) {
+      new Exceptions(Objects.requireNonNull(res.errorBody()).charStream()).checkException();
     }
-    AccountData accountData = accountDataResponse.body();
+    AccountData accountData = res.body();
     headers.SID = Objects.requireNonNull(accountData).getSid();
     account = accountData;
+    headers.AUID = accountData.getAuid();
   }
 
-  public void loginAminoapps(String email, String password) throws Exception {
-    var jsonModel = new LoginAminoappsBody();
-    jsonModel.setEmail(email);
-    jsonModel.setSecret(password);
-    jsonModel.setRecaptchaChallenge("03AGdBq24RkJRzNVql43ZETbuzHfaUG0VVqx4U9uRqwaCHYbyGDG-KlxP7GAdUKM-A9ajDP_ZkB9PlVL8lJ312U9vkk0lI9J92JwLR6obxq-A5NTeABdzUaWfJY5aGcLPKX31q3O8rAvd7QPOBybvjhmgHZQlZ3Z1gf1tJpyCP3rrTEsTjsM6f_h68_IYh7MLuf3ut9fkMoQiJLyaAV9ZGT5I_5dhAfxSFyFAsrv0tGpre2m8AFakm4k5SYO_W_6c2Nrl84fZdsqnrdjoHdGAOPbP73ZR1afPrqQo_e01nRJb7sIstx4Y3wBsSm2B8Yf3s4HsVrBkyXj0UTY1NlCdnzGIIKAp92xjp6RZlausFk_MDD1t9DJhGGzYaNMyVoCNTMvFULs9sQZsUs7D25slbOjBlwNx5Rj8kIbNu-BHL498wj8-wRGb3MB33Q8IEAaAmk9EVjksDcWzi");
-    RequestBody body = RequestBody.create(MediaType.parse("application/json"), gson.toJson(jsonModel));
-    Request request = new Request.Builder()
-            .url("https://aminoapps.com/api/auth")
-            .header("Content-Type", "application/json")
-            .header("Accept", "*/*")
-            .header("User-Agent", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0")
-            .post(body)
-            .build();
-    okhttp3.Response response = OkClient.getOkCall(request);
-    String resBody = Objects.requireNonNull(response.body()).string();
-    try {
-      LoginResponse loginResponse = gson.fromJson(resBody, LoginResponse.class);
-      if (loginResponse.getResult().getUid() != null) {
-        headers.AUID = loginResponse.getResult().getUid();
-        headers.SID = response.headers("set-cookie").get(0).split(";")[0].substring(4);
-      } else {
-        throw new LoginException("Login failed");
-      }
-    } catch (Exception e) {
-      throw new InvalidPassword("Invalid email or password");
-    }
-  }
+//  public void loginAminoapps(String email, String password) throws Exception {
+//    var jsonModel = new LoginAminoappsBody();
+//    jsonModel.setEmail(email);
+//    jsonModel.setSecret(password);
+//    jsonModel.setRecaptchaChallenge("03AGdBq24RkJRzNVql43ZETbuzHfaUG0VVqx4U9uRqwaCHYbyGDG-KlxP7GAdUKM-A9ajDP_ZkB9PlVL8lJ312U9vkk0lI9J92JwLR6obxq-A5NTeABdzUaWfJY5aGcLPKX31q3O8rAvd7QPOBybvjhmgHZQlZ3Z1gf1tJpyCP3rrTEsTjsM6f_h68_IYh7MLuf3ut9fkMoQiJLyaAV9ZGT5I_5dhAfxSFyFAsrv0tGpre2m8AFakm4k5SYO_W_6c2Nrl84fZdsqnrdjoHdGAOPbP73ZR1afPrqQo_e01nRJb7sIstx4Y3wBsSm2B8Yf3s4HsVrBkyXj0UTY1NlCdnzGIIKAp92xjp6RZlausFk_MDD1t9DJhGGzYaNMyVoCNTMvFULs9sQZsUs7D25slbOjBlwNx5Rj8kIbNu-BHL498wj8-wRGb3MB33Q8IEAaAmk9EVjksDcWzi");
+//    RequestBody body = RequestBody.create(MediaType.parse("application/json"), gson.toJson(jsonModel));
+//    Request request = new Request.Builder()
+//            .url("https://aminoapps.com/api/auth")
+//            .header("Content-Type", "application/json")
+//            .header("Accept", "*/*")
+//            .header("User-Agent", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0")
+//            .post(body)
+//            .build();
+//    okhttp3.Response response = OkClient.getOkCall(request);
+//    String resBody = Objects.requireNonNull(response.body()).string();
+//    try {
+//      LoginResponse loginResponse = gson.fromJson(resBody, LoginResponse.class);
+//      if (loginResponse.getResult().getUid() != null) {
+//        headers.AUID = loginResponse.getResult().getUid();
+//        headers.SID = response.headers("set-cookie").get(0).split(";")[0].substring(4);
+//      } else {
+//        throw new LoginException("Login failed");
+//      }
+//    } catch (Exception e) {
+//      throw new InvalidPassword("Invalid email or password");
+//    }
+//  }
 
   public void watchAd() throws Exception {
     String eventId = UUID.randomUUID().toString();
@@ -97,30 +93,27 @@ public class Client {
     var body = new RegisterCheckBody();
     body.setEmail(email);
     body.setDeviceId(deviceId);
-    Call<JsonObject> res = retrofit.registerCheck(headers.getHeaders(gson.toJson(body)), body);
-    Response<JsonObject> jsonObjectResponse = res.execute();
-    if (!jsonObjectResponse.isSuccessful()) {
-      new Exceptions(Objects.requireNonNull(jsonObjectResponse.errorBody()).charStream()).checkException();
+    Response<JsonObject> res = retrofit.registerCheck(headers.getHeaders(gson.toJson(body)), body).execute();
+    if (!res.isSuccessful()) {
+      new Exceptions(Objects.requireNonNull(res.errorBody()).charStream()).checkException();
     }
   }
 
   public EventLogResponse getEventLog(String language) throws Exception {
-    Call<EventLogResponse> res = retrofit.eventLog(headers.getHeaders(), language);
-    Response<EventLogResponse> objectResponse = res.execute();
-    if (!objectResponse.isSuccessful()) {
-      new Exceptions(Objects.requireNonNull(objectResponse.errorBody()).charStream()).checkException();
+    Response<EventLogResponse> res = retrofit.eventLog(headers.getHeaders(), language).execute();
+    if (!res.isSuccessful()) {
+      new Exceptions(Objects.requireNonNull(res.errorBody()).charStream()).checkException();
     }
-    return objectResponse.body();
+    return res.body();
   }
 
   public void requestValidationCode(String email, String deviceId) throws Exception {
     var body = new RequestValidationCodeBody();
     body.setEmail(email);
     body.setDeviceId(deviceId);
-    Call<JsonObject> res = retrofit.requestValidationCode(headers.getHeaders(gson.toJson(body)), body);
-    Response<JsonObject> jsonObjectResponse = res.execute();
-    if (!jsonObjectResponse.isSuccessful()) {
-      new Exceptions(Objects.requireNonNull(jsonObjectResponse.errorBody()).charStream()).checkException();
+    Response<JsonObject> res = retrofit.requestValidationCode(headers.getHeaders(gson.toJson(body)), body).execute();
+    if (!res.isSuccessful()) {
+      new Exceptions(Objects.requireNonNull(res.errorBody()).charStream()).checkException();
     }
   }
 
@@ -136,58 +129,51 @@ public class Client {
     data.setCode(code);
     validationContext.setData(data);
     body.setValidationContext(validationContext);
-    Call<JsonObject> res = retrofit.register(headers.getHeaders(gson.toJson(body)), body);
-    Response<JsonObject> jsonObjectResponse = res.execute();
-    if (!jsonObjectResponse.isSuccessful()) {
-      new Exceptions(Objects.requireNonNull(jsonObjectResponse.errorBody()).charStream()).checkException();
+    Response<JsonObject> res = retrofit.register(headers.getHeaders(gson.toJson(body)), body).execute();
+    if (!res.isSuccessful()) {
+      new Exceptions(Objects.requireNonNull(res.errorBody()).charStream()).checkException();
     }
-    return jsonObjectResponse.body();
+    return res.body();
   }
 
   public CommunitiesData getSubClients(int start, int size) throws Exception {
-    Call<CommunitiesData> res = retrofit.getSubClients(headers.getHeaders(), start, size);
-    Response<CommunitiesData> communitiesDataResponse = res.execute();
-    if (!communitiesDataResponse.isSuccessful()) {
-      new Exceptions(Objects.requireNonNull(communitiesDataResponse.errorBody()).charStream()).checkException();
+    Response<CommunitiesData> res = retrofit.getSubClients(headers.getHeaders(), start, size).execute();
+    if (!res.isSuccessful()) {
+      new Exceptions(Objects.requireNonNull(res.errorBody()).charStream()).checkException();
     }
-    return communitiesDataResponse.body();
+    return res.body();
   }
 
   public LinkInfoResponse getFromCode(String code) throws Exception {
-    Call<LinkInfoResponse> res = retrofit.getFromCode(headers.getHeaders(), code);
-    Response<LinkInfoResponse> linkInfoResponse = res.execute();
-    if (!linkInfoResponse.isSuccessful()) {
-      new Exceptions(Objects.requireNonNull(linkInfoResponse.errorBody()).charStream()).checkException();
+    Response<LinkInfoResponse> res = retrofit.getFromCode(headers.getHeaders(), code).execute();
+    if (!res.isSuccessful()) {
+      new Exceptions(Objects.requireNonNull(res.errorBody()).charStream()).checkException();
     }
-    return linkInfoResponse.body();
+    return res.body();
   }
 
   public WalletResponse getWalletInfo() throws Exception {
-    Call<WalletResponse> res = retrofit.getWalletInfo(headers.getHeaders());
-    Response<WalletResponse> walletInfo = res.execute();
-    if (!walletInfo.isSuccessful()) {
-      new Exceptions(Objects.requireNonNull(walletInfo.errorBody()).charStream()).checkException();
+    Response<WalletResponse> res = retrofit.getWalletInfo(headers.getHeaders()).execute();
+    if (!res.isSuccessful()) {
+      new Exceptions(Objects.requireNonNull(res.errorBody()).charStream()).checkException();
     }
-    return walletInfo.body();
+    return res.body();
   }
 
-  public JsonObject checkDevice() throws Exception {
+  public void checkDevice() throws Exception {
     var body = new CheckDeviceBody();
     body.setDeviceID(headers.DEVICEID);
-    Call<JsonObject> res = retrofit.checkDevice(headers.getHeaders(gson.toJson(body)), body);
-    Response<JsonObject> deviceResult = res.execute();
-    if (!deviceResult.isSuccessful()) {
-      new Exceptions(Objects.requireNonNull(deviceResult.errorBody()).charStream()).checkException();
+    Response<JsonObject> res = retrofit.checkDevice(headers.getHeaders(gson.toJson(body)), body).execute();
+    if (!res.isSuccessful()) {
+      new Exceptions(Objects.requireNonNull(res.errorBody()).charStream()).checkException();
     }
-    return deviceResult.body();
   }
 
   public void joinCommunity(String comId) throws Exception {
     var body = new JoinCommunityBody();
-    Call<JsonObject> res = retrofit.joinCommunity(headers.getHeaders(gson.toJson(body)), comId, body);
-    Response<JsonObject> jsonObjectResponse = res.execute();
-    if (!jsonObjectResponse.isSuccessful()) {
-      new Exceptions(Objects.requireNonNull(jsonObjectResponse.errorBody()).charStream()).checkException();
+    Response<JsonObject> res = retrofit.joinCommunity(headers.getHeaders(gson.toJson(body)), comId, body).execute();
+    if (!res.isSuccessful()) {
+      new Exceptions(Objects.requireNonNull(res.errorBody()).charStream()).checkException();
     }
   }
 
@@ -195,10 +181,9 @@ public class Client {
     var body = new RequestVerifyBody();
     body.setDeviceID(headers.DEVICEID);
     body.setIdentity(email);
-    Call<JsonObject> res = retrofit.requestVerifyCode(headers.getHeaders(gson.toJson(body)), body);
-    Response<JsonObject> jsonObjectResponse = res.execute();
-    if (!jsonObjectResponse.isSuccessful()) {
-      new Exceptions(Objects.requireNonNull(jsonObjectResponse.errorBody()).charStream()).checkException();
+    Response<JsonObject> res = retrofit.requestVerifyCode(headers.getHeaders(gson.toJson(body)), body).execute();
+    if (!res.isSuccessful()) {
+      new Exceptions(Objects.requireNonNull(res.errorBody()).charStream()).checkException();
     }
   }
 
@@ -211,10 +196,9 @@ public class Client {
     data.setCode(code);
     validationContext.setData(data);
     body.setValidationContext(validationContext);
-    Call<JsonObject> res = retrofit.verify(headers.getHeaders(gson.toJson(body)), body);
-    Response<JsonObject> jsonObjectResponse = res.execute();
-    if (!jsonObjectResponse.isSuccessful()) {
-      new Exceptions(Objects.requireNonNull(jsonObjectResponse.errorBody()).charStream()).checkException();
+    Response<JsonObject> res = retrofit.verify(headers.getHeaders(gson.toJson(body)), body).execute();
+    if (!res.isSuccessful()) {
+      new Exceptions(Objects.requireNonNull(res.errorBody()).charStream()).checkException();
     }
   }
 
@@ -225,25 +209,16 @@ public class Client {
     var data = new Data();
     data.setCode(code);
     body.setData(data);
-    Call<JsonObject> res = retrofit.activateAccount(headers.getHeaders(gson.toJson(body)), body);
-    Response<JsonObject> jsonObjectResponse = res.execute();
-    if (!jsonObjectResponse.isSuccessful()) {
-      new Exceptions(Objects.requireNonNull(jsonObjectResponse.errorBody()).charStream()).checkException();
+    Response<JsonObject> res = retrofit.activateAccount(headers.getHeaders(gson.toJson(body)), body).execute();
+    if (!res.isSuccessful()) {
+      new Exceptions(Objects.requireNonNull(res.errorBody()).charStream()).checkException();
     }
   }
 
-  public String buildPostRequest(String url, String jsonString, String sig) throws Exception {
-    RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonString);
-    Request request = new Request.Builder()
-            .url(url)
-            .header("NDCDEVICEID", headers.DEVICEID)
-            .header("Content-Type", "application/json; charset=utf-8")
-            .header("Host", "service.narvii.com")
-            .header("NDC-MSG-SIG", sig)
-            .header("NDCAUTH", "sid=" + headers.SID)
-            .post(body)
-            .build();
-    okhttp3.Response response = OkClient.getOkCall(request);
-    return Objects.requireNonNull(response.body()).string();
+  public void buildPostRequest(String url, Object body, String sig) throws Exception {
+    Response<JsonObject> res = retrofit.customPostRequest(headers.getHeadersWithSig(sig), url, body).execute();
+    if (!res.isSuccessful()) {
+      new Exceptions(Objects.requireNonNull(res.errorBody()).charStream()).checkException();
+    }
   }
 }

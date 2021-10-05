@@ -10,13 +10,25 @@ public class SendActiveBody {
     private List<UserActiveTimeChunkList> userActiveTimeChunkList;
 
     @SerializedName("optInAdsFlags")
-    private long optInAdsFlags = 2147483647;
+    private long optInAdsFlags = 0;
 
     @SerializedName("timezone")
-    private int timezone = 180;
+    private int timezone;
 
     @SerializedName("timestamp")
     private long timestamp = TimeUtils.unixInstant();
+
+    public void setOptInAdsFlags(long optInAdsFlags) {
+        this.optInAdsFlags = optInAdsFlags;
+    }
+
+    public void setTimezone(int timezone) {
+        this.timezone = timezone;
+    }
+
+    public List<UserActiveTimeChunkList> getUserActiveTimeChunkList() {
+        return userActiveTimeChunkList;
+    }
 
     public void setUserActiveTimeChunkList(List<UserActiveTimeChunkList> userActiveTimeChunkList){
         this.userActiveTimeChunkList = userActiveTimeChunkList;
